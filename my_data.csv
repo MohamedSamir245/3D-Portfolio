@@ -1,0 +1,1625 @@
+Time,Text
+0:01,post 2010 this is going to be the decade of e-commerce
+0:01,post 2010 this is going to be the decade of e-commerce
+0:07,Ben Pandey runs a traditional Eatery in the city of Mumbai
+0:13,Mr Pandey wants to improve his income by listing it in platforms like zwigy and
+0:19,somato he thought this will fix his fortune but he gets dejected
+0:25,both platforms rejected his application a budding data professional decides to
+0:33,step up and help his Uncle Ben Pandey Peter is a go-gadget he sat on a mission
+0:42,he decides to build a chat board for his Uncle Ben's Eatery
+0:48,in fact he succeeded in building one the first small step towards a giant lead
+0:56,[Music]
+1:06,thank you I am going to take you along Peter's journey of building this chatbot
+1:12,step by step we will first configure our chatbot in dialogflow then we will write
+1:17,a back-end server in Python using fast API web serving framework this will
+1:23,interact with mySQL database so we will be placing orders retrieving order information from this database and once
+1:31,all of this is done we will integrate this chatbot to our food website this
+1:37,will be truly end-to-end project which will not only help you learn a lot of
+1:42,diverse skills required in building a chat board it will also give you a solid
+1:48,project that you can put on your resume first on your emails and get ready for the ride review the problem statement
+1:56,we have this food website Pandey fresh and delicious foods and here if someone
+2:02,comes on the website it will show all the items so right now it is selling
+2:07,only nine items these are all yummy items chole Samosa mango let's see and so on and a person can get an idea on
+2:15,the price location they can even call to inquire but they don't have any technology as such and what we want to
+2:23,do is we want to build a chatbot and integrate it on this particular website
+2:29,so that you know the chatbot appears on the bottom right and a person can say
+2:36,New Order or track order so now let's say if I'm saying new order it will show me all the items which are available and
+2:43,I can then say give me two bav bhaji one pizza all the junk food and it will kind
+2:50,of review whatever you have added in the cards so far then you can add let's say
+2:56,one mango let's see you can even remove an item you can say well you know these
+3:01,are too much uh I want to remove let's say pizza in the chat Port you look at
+3:06,it chatbot is smart it is remembering the context and it is having this list where you can add items and remove items
+3:14,eventually when you say that's it it knows that you're completing an order
+3:19,and it will say okay we have placed your order this is the bill and so on so we are going to implement this and this
+3:26,will insert a record through our backend in our mySQL database and it will handle all this conversation I am calling this
+3:33,a Mira chatbot you know all these companies have fancy names Ino Julie uh
+3:40,Alexa all these chatbot names I came up with this name Mira uh so Meera will be
+3:45,the chatbot that we are going to build now you can have a different scenario where a person might say I want to track
+3:52,an existing order after placing an order what happens is in the kitchen Chef will
+3:57,prepare it then it will be delivered so here see order number 41 is in transit
+4:02,meaning order has started from the restaurant and it is on the way previously it was uh in progress the
+4:10,previous order so it can give you all that status when you say okay Pani Puri
+4:15,I did not understand it will tell you that we do not support these items we can only order from all these nine items
+4:22,so it will have all these uh fancy features okay so first thing we are doing now is we are scoping down our
+4:30,work when I worked in Industry at Bloomberg and Nvidia business managers would come up with big projects and they
+4:37,will have so many features that they would want to implement but when you start any project in the first phase you
+4:43,don't Implement all the features you have to scope it down so here is a huge
+4:49,list of requirement you come up with the initial set of features that you're going to implement and this is called
+4:56,scoping your work okay in our case we have variety of features when it comes
+5:03,to New Order one can place a new order you can also support paying through a
+5:09,chatbot for that order the example that I showed you previously in the chatbot it was cash on delivery but you know a
+5:15,business user will say okay why don't you support credit card or debit card payment in your chatbot you can also
+5:22,have tracking features you can track by order ID Track by phone number Track by customer name you can have other
+5:28,features as well such as offers and store hours and so on now you will
+5:35,review these features with business by you I mean the data scientists or ml
+5:40,Engineers who are working on this project so there will be engineering team or data scientist team there are a
+5:45,business team they will have conversation they will do negotiation they will say hey this feature will take one month this feature will take five
+5:52,days uh which one you want to pick and business will come up with their most desired items okay so they will say Okay
+6:00,I want to implement these two items placing a new order and tracking the order and that decision is dependent on
+6:08,two factors one is how important is that feature second thing is feasibility uh
+6:13,there is a term called feasibility impact analysis let's say this feature is very important supporting payment through a chatbot business will say yes
+6:20,this is very important but data scientists will say well it will take two months then that feature has a high
+6:26,impact but low visibility on the other hand you can have a feature which is very high feasibility but low
+6:34,impact for example store hours implementing store hours is a piece of cake you can implement it in half a day maybe
+6:42,but it doesn't have too much impact okay so you want to Target those features
+6:48,which has high impact high visibility and after a closed room discussion
+6:53,between business stakeholders and data scientists they decided these are the two features which we should Implement
+7:00,in our first round so what we had initially was all these
+7:06,features if you put it in a flat vertical list this is called your backlog
+7:11,folks when you're preparing for data science or NLP career make sure you
+7:17,don't learn only technical things you need to understand the fundamentals behind project management agile
+7:23,methodology stakeholder management and so on backlog is a popular term when it comes
+7:30,to Agile way of building projects backlog is nothing but all your wish list all the feature you want to build
+7:36,then after you had that discussion which I already talked about you came up with
+7:41,these two features and they are called MVP minimum viable product which is your
+7:48,phase one in phase one I want these two features and you can use tools such as jira notion Asana
+7:56,etc for doing this kind of project management right now I just showed you all this in my slide but when I was at
+8:02,Bloomberg we were using jira there are companies which is using a notion for
+8:08,example in my own company right now we use notion as a project management tool I have used Asana as well these are all
+8:14,awesome tools and they help you more manage your project they help you define your backlog your MVP and so on and then
+8:22,once your MVP is defined your data science team will work only on these two they will not look at all these they
+8:28,will keep this in mind because these features they will Implement in phase two phase three and so on but their
+8:34,immediate Target is these two features once these two features are out now you will have minimum viable product which
+8:42,is your first version which you can deploy you can test with users users
+8:47,will give you some feedback after the feedback some of your backlog items will change because business is dynamic it's
+8:54,always changing it's not like okay my manager told me to implement this 10 feature and I will keep on implementing
+9:00,this for next one yet no as you deploy a MVP in production your current backlog
+9:05,will change based on the feedback you're getting from People based on changing demands from the business so in phase
+9:12,two then you can pull some more features from backlog so you'll continue adding
+9:17,or deleting items from backlog and you will pull the features from backlog to here okay so read online about agile
+9:25,methodologies scrum way of doing project development there is a great website called scrumtraining series.com if you
+9:32,want to learn about scrum all right so now we have these two features that we
+9:37,are going to implement in this particular video so in throughout the video we are building this particular MVP so now let's think about solution
+9:44,design and architecture when you get a project and when you have a scope of work clearly defined see so far we have
+9:51,clearly defined scope of work I want to build a chatbot put it on my website
+9:56,chatbot should support two features placing a new order and tracking order bet order ID as a data science team you
+10:03,know exactly what you're building now comes the phase where you will Define the technical architecture or the
+10:09,solution usually in the companies uh when I was working in an industry and even in my company what we do is we get
+10:16,together in a conference room and there will be team of data scientists who will
+10:21,brainstorm the solution uh let's say if you call a student if you're learning or even if you're working as a data
+10:27,scientist you have a great consultant right now who is available to you for
+10:32,free all the time and that consultant is chat Deputy yes chat GPT can give you a
+10:39,complete solution design here I am saying I have a fast food business I want to build this our chatbot and I
+10:46,want two features New Order and track order okay chat GPT will give you a
+10:52,complete design step by step and the suggestion that it is giving is actually pretty good okay it's not like bluffing
+11:00,so it is saying you need to First use dialog flow it's a NLP platform
+11:06,it will understand input and generate responses then you need to use node.js
+11:12,for backend you can have MySQL as a database uh you can use express.js as an
+11:19,interface and web interface okay it is giving you one possible solution that you can use in our case we are not going
+11:26,to use node.js Etc because we like Python and we would like to do this in
+11:32,Python and fast API uh so we will use that but in chat GPT I'm pretty sure if
+11:37,you say I don't want to use node.js I want to use Python show me an alternative approach it will tell you
+11:44,that particular Pro so I would say let's try it out okay so while you're watching the video maybe pause it and just try it
+11:50,out and see the solution steps it has given it's pretty darn amazing okay
+11:57,once you get all these steps you can also say can you tell me step by step
+12:02,process of implementing this in dialog flow because dialog flow is just one component so then it will say okay these
+12:09,are the steps and by the way don't worry about these steps I'm just showing to you so that tomorrow if you work on any
+12:14,NLP or machine learning project you can use chat GPT or to come up with all
+12:20,these steps and it will tell you okay Define intent Define fulfillment and so on so let's go over this process step by
+12:27,step first thing we did is we Define scope of work we had new order tracking
+12:33,order billing query store hours and we said we'll Implement only two things New Order and tracking order second one is
+12:39,chat board platform selection see chat GPT gave dialog flow but when I was
+12:44,talking to my friend he told me why do you use Amazon Alex then I did Google Google told me rasa and dialogflow and
+12:51,five other platforms I am now confused I don't know what to use so you have to do
+12:56,some research to figure out which platform is the best one for you and
+13:02,there are no general answers there are specific answers for your specific need
+13:07,dialoflow might be better for a need of some other team rasa might be better so it's like dependent on the individual
+13:14,situation therefore you as a NLP engineer or a data scientist need to
+13:21,learn how to pick a right platform for your given project or a problem then we
+13:27,are going to obviously in this project use dialogflow I will tell you how I pick dialogflow and why I didn't use rasa in dialogflow we have to set up
+13:34,something called intent and fulfillment we'll go into the details okay don't worry I know these are all jargons this
+13:41,is all actually very easy I will tell you later on then we will build back-end and we will do it in Python and fast API
+13:47,on this channel there is a fast API tutorial which you can watch and get your fundamentals clear but yeah that's
+13:54,what we are doing we are not using node.js Etc and then in the end we will integrate this chat board into our
+14:00,website all right now how did we pick up dialogflow as a platform for this
+14:06,particular project so see there are two options whenever you are building any chatbot you can use our readymade
+14:14,framework such as dialogflow rasa Etc or you can go for custom implementation where you can use things like open AI
+14:21,llms hugging face Bloom foundational model and so on in our case what we want to do is we want to get some help from
+14:28,the export and once again that expert is chat GPD so in chatgpt you can say okay
+14:34,which platform is better initially I also asked questions should I use open Ai and build the boat it says no doesn't
+14:41,make sense that we use open AI so now I'm saying okay dialogue flow and rasa
+14:47,which one is better and it will create a comparison table between both the platforms and when I look at it what I
+14:54,find is dialog flow gives lot of features out of the box so you have to do less work see here my business is
+15:02,facing problem I want to build a chatbot fast and release it soon so time to Market is my first priority although
+15:09,rasa gives lot of customization time to Market is not as high as dialogflow time
+15:14,to Market means how much time you take to ship your product which is chatbot in
+15:20,this case to Market how much time you take to complete this project that is time to Market and it's a very important
+15:27,parameter training data since dialogflow is a Google's platform it has vast amount of training data here you have to
+15:34,do some manual training a dialogflow is cloud-based so directly you can upload it to Cloud uh here rasa you have to
+15:41,build it and you have to kind of host it on your own okay uh so let's see other
+15:48,differences Integrations uh once again dialogflow provides better integration
+15:53,so if you read this carefully by that I'm not gonna go into all these one by one you can read this and you will
+16:00,realize yourself that dialog flow is better for our use case uh we did not use open ai's llm Etc because our
+16:08,problem is not like a generative AI type of problem our problem is user is
+16:14,placing an order he's asking for tracking Etc it's like very specific actions and for that dialog flow is the
+16:20,best then I got some confidence that dialog flow is something I should use
+16:25,but I still want to do more research just to get a confirmation that I am making a right choice so naturally I
+16:32,would think which companies use dialog flow if dialogflow is not used by uh other companies then it means it would
+16:38,have some problem so this is what I do I I always make sure the technology I'm using is mature it is stable it is used
+16:46,in the industry okay then I am not doing experiments for that company okay here I
+16:51,ask this question and it immediately tells me Domino's is using dialogflow Ticketmaster Air Asia there are so many
+16:59,companies which are using dialog flow after reading that after confirming
+17:04,these companies are using it I am now damn sure that I have confidence on dialogue flow I can go
+17:12,ahead and use it for my project all right let's move on to the next step which is I'm saying this graph folks so
+17:17,many people are watching my videos they are not subscribed if you can subscribe to this channel it will mean a lot to me
+17:24,it might be a small thing for you but it's gonna make a huge difference in your life all right now let's do our
+17:30,dialog flow setup I type dialogflow in Google it is taking me to this
+17:36,particular website and here uh it has information on two different versions of
+17:42,dialogflow which is CX and Es all right and now I am again confused which one is
+17:48,better for my needs okay and these two versions are actually a lot different uh
+17:54,in the way they work and they have this featured uh list and when I compared it
+18:00,I did not get much idea so what I did is again I went to my consultant friend
+18:05,chat GPT I said look I want to build this chatbot I want to have just two
+18:11,features my budget is limited you need to tell your conditions your situation to chargpt can you suggest me which is
+18:17,better and it is saying dialogflow yes is better because number one cost cost
+18:23,of es is much lesser compared to CX if you look at CX uh their pricing is I
+18:30,think it's it's bit costly per I think of 10 chat session they charge something
+18:38,like two dollar which is kind of costly so I will go with es and you can just
+18:45,compare other uh factors why GPD saying you should use ESN not CX okay
+18:54,so once you say I have dialogflow es ready to go you can just click on go to
+19:00,console or you can just type directly dialogflow.cloud.com
+19:06,you will have to login using your Google credential if you don't have a Google account you need to create it and once
+19:12,you create that account see let me open this in uh in cognitive mode
+19:18,it will say sign in using Google so here you can sign in and then you will come
+19:25,here okay now there is this concept of agent so I have
+19:30,already built this chat board so it is showing this but let me create a new one so here
+19:36,I will say create a new agent so new agent is essentially your new chatbot okay and here my chatbot name is mira
+19:44,mira chatbot for food delivery I know it's a long name
+19:51,but whatever and then I can just say create
+19:56,so when you create this it will use uh Google a cloud actually so this project
+20:02,is already on the cloud you are not building locally by the way you are already building this particular
+20:08,project on the cloud so it already created a Google Cloud project so if you
+20:13,go to settings here uh this is the project ID on Google Cloud
+20:18,if you have used Google Cloud before you will get what I'm talking about but anyways my agent or my kind of basic uh
+20:25,framework for my chatbot is ready and if you look at intents it has two intents
+20:31,so before I go here let's understand what exactly is the intent let's
+20:38,understand intense by going over some examples I use this bank called PNC Bank here in
+20:45,us and when I call them for any help usually they will give me pre-canned
+20:51,list of options such as you want to check your payment recent activity low star stolen card this is not new I think
+20:59,you must be experiencing these things for your banking needs and
+21:04,these are short of like a fixed pre-can option that you can choose from and
+21:10,these five are nothing but the intent okay so let's say if you have an NLP chatbot and it says how can I help you
+21:17,you might say I want to make a payment then it will ask you a few other
+21:22,questions make a payment here is an intent when a person is coming to a chatbot they might have different intent
+21:30,or intention such as they want to make a payment they want to check their balance
+21:35,they want to report a stolen card or lost card these are intent so it's a
+21:40,fancy word folks but actually you know what this is It's like a main function it's like what do you want to do so you
+21:46,have this natural language English from that you want to derive or you want
+21:53,to map that sentence with specific action that your back end should take
+21:59,okay so that is your intent in another conversation you might say
+22:04,can you check my recent activity here checking recent activity is an intent whatever I have outlined here these five
+22:11,things these are intent in our case you will say Okay Place me a new order
+22:19,so placing New Order is an intent then you can say I want to add two pav Bhajan
+22:25,one pizza so when we design the backend you will get more better understanding adding these items into your order is
+22:32,also an intent okay then you can say I want to add mango let's see that is intent so these two are same intent this
+22:40,is a different intent this is like a pure beginning a new order whereas you are adding items to existing order and
+22:46,when you say that's all you mean complete my order so that is your intention I want you to complete my
+22:52,order and tell me how much money you are going to charge me so that is order
+22:58,complete intent I hope it is clear you can pause this video If you're not
+23:03,getting it it's really a simple concept then boot will say okay I place your order in scenario two you might also say
+23:11,hey remove Vada power from my order so removing Vodafone okay that means you
+23:18,are intending order remove okay so order removes kind of like a function or
+23:23,intention uh you might say hey please get rid of pizza you might use a
+23:30,different word okay you can say remove it up how get rid of pizza I don't want Biryani all of these mean
+23:38,the same intent which is order removed so in dialog flow we will map this we
+23:45,will map different English sentences that you can use for a specific intent
+23:50,so we'll say these 10 sentences mean this specific intent and don't worry it's a NLP tool so it's not like you
+23:57,have to specify all possible options it will figure out using its NLP capability
+24:02,then you can say Okay track my order okay here the intent is track order okay
+24:10,so it's just a mapping between what user says and what action will be taken by a chat board or your backend now let's
+24:17,understand the concept of entity folks if you are following the NLP playlist you already know what entities are but
+24:25,let's look at entities in our uh context so here when you say add to pav bhaji and one
+24:33,pizza to the order let's say if you make this call to a backend python backend
+24:38,python backend got an idea that all right you want to add few items to the
+24:45,order but what are those items here the items are pav bhaji and Pisa and the
+24:50,other thing that it wants to know is what is the quantity of these items so
+24:56,quantities two and one so here these two things are needed so that you can call
+25:01,your python function you might have this function add to order where you need two piece of information name of the item
+25:08,the quantity so intent alone is not sufficient intent is what order at so using order ad maybe
+25:15,you call this function in Python back and add to order and don't worry we'll add all this it will be very clear folks
+25:21,if you're confused right now just hold on I will make things very very clear no rocket science here just think intent
+25:28,order add means some python backend function we are calling which is add to order and as an argument it needs this
+25:34,information how do you get that information you get that through entities so here power budgie is one
+25:41,entity which is called food item two and one these are another quantity which is called number it's a system generated
+25:48,entity in dialog flow number you can also Define custom entity you can call it okay these are quantity of food Dash
+25:56,quantity okay so I think it's now clear let me give you one more example which I
+26:01,have discussed in our NLP tutorial playlist before you have this particular sentence there are various entities
+26:07,present here okay what are those entities if you remember from NLP playlist just pause this video and make
+26:13,a guess I want to test your knowledge all right I guess you made a right guess here Elon Musk is an entity it's a
+26:21,person entity Tesla is another entity which is a company then 40 could be another entity
+26:27,which is a number or you have this statement for example Michael Bloomberg founded Bloomberg
+26:34,so Michael Bloomberg is a person and Bloomberg is a company name we used to use this a lot whenever we discuss this
+26:41,a name entity disambiguation problem it is called NAD where you have Bloomberg
+26:48,founded Bloomberg so word is same Bloomberg but first one means a person second one means the entity we can say
+26:56,Pandey ji founded Pandey Pandey is the name of the restaurant but the owner is
+27:02,Pandey so so that's a personal entity this one is a business or a company entity
+27:08,yeah so this is a playlist I was talking about if you go to YouTube another playlist uh here in this particular
+27:15,video see uh we have a lot of videos where we discuss entities but uh in this
+27:21,particular video we did name entity recognization and dialog flow is
+27:26,internally using some of these techniques to recognize those entities once you have these entities you can
+27:32,call python backend function very easy okay in the Second Use case of tracking order the 9992 number 9922 number that
+27:41,you give is a order ID entity and then you're taking uh these two and calling
+27:47,some python backend function saying track order and you're giving this order ID so you are kind of getting a sense of
+27:54,this whole chatbot development process you have a dialog which is a conversation from conversation you are
+27:59,extracting two things intent entity an intent is mapped to some
+28:05,python function ndte is nothing but the argument to that python function
+28:10,all right by default you get two intents in dialog flow so I clicked on intents
+28:16,and I'm seeing these two okay what are these exactly let me check welcome intent here
+28:23,there are couple of sections there is contacts events training phrases and tax
+28:29,response let's look at training phrases first here it says
+28:35,what are the possible prompts that are accepted as
+28:40,part of that intent so when here on the top when I say hey yeah
+28:46,it is saying greetings how can I assist and you see it matched the intent default welcome intent so whenever I say
+28:54,here it will look into the current list of intents and based on the training
+28:59,phrases that you have provided it will match that and this response that you're saying
+29:05,greetings how can I assist is coming from here you see so in the tax response you have this four possible options and
+29:12,randomly it will give you different tax responses so let me try another one I
+29:18,will say howdy okay and it will say good day what can I do
+29:23,so you can see that here see so you understand I am typing some text
+29:29,in chatbot it is matching it with all the intent so I have two intense default
+29:34,welcome and default uh fallback and it is matching it with the welcome intent and whatever is the response for the
+29:40,welcome intent it will give you that in our chat board we want to start a
+29:46,conversation by saying choose from New Order and track order so I will change
+29:52,the default welcome intent and I will keep this particular thing same you can say hi hello to begin the
+29:58,conversation but in the response I will remove all these
+30:03,and I will say this in the second response is just a
+30:09,variation by the way so every time you don't want to say the same thing that's why you are giving
+30:15,three different variations so user get different experience all the time okay when I hit save sometimes it will take
+30:22,some time so you need to wait a little bit now when I say hey yeah
+30:28,see it is giving you one of these responses what can I do you can say New Order or track order and by the way all
+30:35,these responses I copied from the text file which you can download by clicking on uh the link which you have in a video
+30:42,description I have given a zip folder with all the assets and if you expand
+30:48,that folder it will be zip file and if you extract that zip file you will get
+30:54,this particular directory in that go to dialogflow assets opentraining phrases
+31:00,Dot txt and that file has all the three text which I just copy pasted okay that
+31:06,is for default welcome intent okay now
+31:13,this looks good what I want to do next is
+31:18,let's go back click here and check fallback intent
+31:23,in the fallback intent uh the purpose of this intent is if
+31:29,chatbot doesn't understand what you're saying it will give one of these responses so if you say what is the
+31:37,temperature today okay that's not the purpose of this chat but the chatbot
+31:42,doesn't know how to handle that it will say sorry could you say again and that is coming from here see one of these
+31:49,responses it will randomly pick from one of these responses so what you want to do here is I want to delete all of these
+31:56,okay so let me delete and in the default fallback intent
+32:02,I want to say this so in the fallback intent I want to say
+32:08,I did not understand what you said please choose from New Order or track
+32:13,order and when you're placing new order by the way make sure you're you're placing order from only these items
+32:20,because remember our menu is limited we have only nine items food items so we
+32:25,want to say this to user so that they are kind of guided in their conversation I will hit save and now when I say what
+32:34,is the temperature it will say I didn't understand look I don't know how to handle that temperature question but I
+32:42,can take your order so you can say the New Order track order and you know whatever okay so my default intent and
+32:52,my welcome intent looks good now let's create our first intent which is
+32:59,create an intent which is New Order so it is New Order so when you're placing a new order
+33:06,uh what kind of uh text you will give okay so let's try it so first you will
+33:12,start your conversation in your chat about saying hi it will tell you new order or track order what do you think user will say
+33:18,user will either say New Order or track order they might say New Order okay so
+33:23,you want to have this as a training phrase here so you can click on ADD training phrases
+33:30,and add this as a new order now what else user might say okay they
+33:36,can say place a new order maybe okay they might say let me just copy yeah I I
+33:43,just put two things here New Order and place New Order if you are looking for more training responses uh what you can
+33:50,do is you can go to chat GPT and you can say say this in five different ways and
+33:56,chat GPT will help you generate those training phrases and you if you have more training
+34:02,phrases it's going to help you okay so it is advice that you have uh as many
+34:09,training phrases as you can
+34:15,okay uh now let's try this thing so I will say hi and it will say New Order I
+34:23,will say New Order okay I have seen that chadji uh not
+34:29,charging dialogue flow sometimes takes us time so there is a delay here uh it
+34:34,is kind of training the agent uh so once it is trained maybe I will just wait for few seconds and then we'll we'll try
+34:41,okay let's try again so see now it worked it is saying New
+34:46,Order so here it matches the intent so here you are typing whatever you will type in uh your chatbot then it is
+34:53,matching the intent here and if you have any response it will
+34:58,give you a response here so what do you want to give in a response so let's add that so here in the text response I want
+35:06,to say this okay and once again you have this file folks
+35:12,so feel free to copy paste things from the file and then once you learn of course you can have your own responses
+35:19,so here when someone says New Order I want to say starting a new order I I'm
+35:25,meaning the chatbot and you will guide people so it's it's important that while building a chat board you do some
+35:32,guiding you have to give them Clues on what they should type next that way the
+35:38,conversation will be very clear so now we have new order so let me start all
+35:44,over again and by the way uh I will talk about context later but let's see hi okay and now it is saying
+35:51,New Order so you'll say New Order now it is saying see this thing you can start a
+35:57,new order by saying things like I want two pizzas one mangola C also specify quantity because you want user to
+36:04,specify quantity sometimes they say I want pizzas but how many peas are if you call a pizza shop they will tell you
+36:10,right so same thing should happen here you need to Clearly say specify quantity for each of these items okay so once
+36:18,again these are the two uh alternate responses uh so at any time
+36:24,it will just kind of randomly say see here now it is saying starting a new order all right this looks good now
+36:31,let's create the tagging order I only have the board build so I just copy copy
+36:37,paste the name here just to save the time okay so track order so tracking
+36:43,order will be our new intent and here in the tracking order what are the training phrases so once
+36:50,again I'm just going to copy paste from here so you will say one of these three
+36:55,things okay so check this status of my order
+37:03,that could be one thing then the other one is track order and
+37:10,track existing order once again if you want to add more training faces you can say to charge gpts how about
+37:17,this and it will generate five different variations so maybe you can include one of these variations I'm feeling lazy
+37:24,right now so I'll just say done and when someone says I want to track my order what would be your response as a chat
+37:31,board you'll ask for a tracking ID correct okay so let's let's see let's
+37:37,start again so I will say hey it is saying New Order or track order when I say track order
+37:44,see it is okay once again it it is taking I've seen this it is taking time
+37:50,so let's wait for few seconds a few moments later all right after some delay it is working now when you set track
+37:57,order it is matching the track order intent but what should be your response your response should be what is your
+38:04,tracking ID give me your tracking ID things like that so let's add that in the text response here you can say what
+38:11,is the tracking ID or lesser order ID
+38:18,uh other things
+38:23,you can say I can just copy paste from the other chatbot which I have already built I'm sure please enter your order
+38:32,IDs things like that once again you can use chat GPT for this training purpose all
+38:40,right now let's test the whole flow again you are saying hi it is saying New Order track order you're saying track
+38:47,order now enter your order ID and you will say whatever 4560 whatever now this
+38:53,one it is not recognizing so we will look into this a little later but at least now my intent classification is
+39:02,done for these two use cases it is able to recognize if I'm talking about tracking the order on New Order
+39:09,okay so once again uh you can say fresh order and see it is recognizing it is
+39:14,New Order you're talking about new order you can say track my order please
+39:21,and okay sometimes I know it behaves weird
+39:27,it depends on adding more training phrases but it will look good overall and it is doing this intent
+39:34,classification so the question might be how does it work exactly whatever you're typing here uh it doesn't have to be
+39:41,exactly the same thing that you gave as a training phrase so there is some kind
+39:47,of machine learning here which dialog flow uses so let me go over that what
+39:52,happens is um when you give some training phrases so for New Order I gave three training
+39:59,phrases New Order Place New Order and fresh order Okay Google's dialog flow
+40:04,will generate more training phrases internally so these are the three I gave but internally by using ml model it will
+40:12,generate more training phrases and it will train an agent so that tomorrow if someone types something different it can
+40:18,still recognize same thing if you say tracking order let's say these are the three training phases I give internally it will which
+40:26,create more training phrases and it will train the agent once the agent is trained
+40:32,when you give any new text in the chat board on the top right when I say order status please
+40:39,the ml model for intent classification will kick in and it will try to classify
+40:45,this particular text in one of these indents so you are essentially doing intent classification here
+40:52,and it will say you know what this is track order intent for a different use case it will say
+40:57,this is a new order intent so this way it can do intent classification using
+41:05,its internal model and if you want to know more about it you can just go to
+41:11,chatgpt and you can say what classification model does
+41:16,dialog flow uses for intent classification and it will give you some
+41:24,information okay so see here it is using irm like intent
+41:31,recognization model uh and here it uses some of the annual natural language
+41:37,understanding techniques for doing that so you can do some reading on this one but so far
+41:44,uh things are looking good as far as our basic basic workflow is concerned now
+41:49,let's improve uh some of our intents and add new ones let's look at the flow of the
+41:56,conversation so if you go back to our presentation okay you will notice that
+42:03,at some point we had this different scenarios so the first scenario that we had was this how can I help New Order
+42:10,what would you like to order uh we covered up till this point now user will say I want to power bhaji
+42:18,and add pizza so let's handle this particular dialogue and for that I will
+42:25,create a new intent called order dot add so you are adding items to order
+42:33,okay so we did first level classification New Order track order now if you have a new order you are adding
+42:40,items to the order and how do you add that I will have to give different training expiration okay and those
+42:47,training expressions are user might say give me two plates of show layer and one
+42:54,cheese piece I know you're getting water in your mouth but ah now let's check this what is
+43:02,happening here is 2 and 1 it is already recognizing them as a entity which is
+43:10,very good so 2 and 1 are called system entity sys DOT number these are default
+43:16,entities for example email phone number these are all generic entities which dialog flow can recognize on its own
+43:23,okay let's give another training phrase what do you do where by the way when you
+43:29,place an order online what kind of statement you say just add all those statements here I like to order two
+43:35,plates of chole one cheese pizza three mango let's see now in this case it did
+43:40,not recognize this one as a CIS number but that's okay you can double click and
+43:46,you can just say sis number see these are all numbers so let's
+43:52,recognize this also as a CIS number and here we want this to be one single
+44:00,entity so here it says number one and two I don't want that so you will just
+44:06,left Mouse click highlight it and just say sis number and you can also type
+44:11,this this DOT number see this is how you assign entities within the statement so
+44:18,I have these two uh training phrases let's hit save and let's create an
+44:24,entity for food item because see the quantity it is already recognizing but
+44:30,food item is something that we have to Define on our own for that I will go to entities
+44:35,I will create the new entity I will call it food item
+44:41,and I will Define synonyms I will do also fuzzy matching by the way fuzzy matching means
+44:47,if it is Loosely matching then also you know match it so see for Z matching is a
+44:54,type of parameters which will approximately match and here the entity
+45:00,that you want to add is let's say I only have those entities here so I'm
+45:08,just gonna copy paste just to save some item uh time on recording so how would you say
+45:14,you can say you can also say Mumbai maybe Mumbai
+45:22,foreign
+45:32,you can just say chole you can say
+45:39,C double actually you can say chole Puri instead of you
+45:45,can also say Puri chole okay variety of synonyms that you can
+45:52,give all right so I'm not going to waste the time here and I will just add it and
+45:57,I'll be back after few seconds okay there was some manual work but
+46:04,finally I have defined all my synonyms once again you can use chat GPT for
+46:10,synonym let's say you want synonyms for ravados I give me synonyms for our Dosa
+46:18,and it will give you that so you can just copy paste these things into here and just hit this
+46:26,okay now our food item entity is defined let's go back to intent and in the order
+46:34,add let's start assigning that entity so here just left Mouse click
+46:41,assign that a food item so I will just say this is food item
+46:47,cheese pizza is also a food item mango let's see is also a food item this is
+46:55,how you assign and it is same thing here you have to do this in every training
+47:00,phase if you do your setup in a proper way your chat board will work very
+47:06,smoothly so you have to be careful and not mess it up here sometimes people assign a wrong entity and they see weird
+47:13,results and they are like oh this is not working well it's a setup issue I added
+47:18,all the training phrases you can see there are two Page worth of training phrases here
+47:24,and I assign the food items here so here you'll just click on it for
+47:31,example like click and then when you assign that entity it will do the work
+47:37,so many times when you're adding a training phase it will not automatically
+47:42,recognize those two so the way you do it is same method highlight it then just
+47:49,select food item then highlight the whole item safe food item this is how you assign
+47:55,entities in your statements if you notice I also put some additional
+48:01,statements such as additionally I would like to add to Mango nursing because in the conversation people will say order
+48:07,me to chole bhature and one Samosa and then after some time they say Okay add
+48:13,to pizza or additionally I need mango let's see I have added those kind of
+48:18,statements here as well in the same intent you can go to chat GPT you can
+48:24,say this is my phrase and say this in five different ways and you can use all
+48:30,of these training phrases as well it will be some manual work but trust me it is very well worth it and all of these
+48:37,training phrases are available in the file that I'm going to give you so all you have to do is copy paste and maybe
+48:42,you add a couple of more training phrases as well on your own then hit
+48:49,save and now we are all set how do you test it well you have the agent here so
+48:56,let's start a conversation you'll say hi New Order and then just say give me two
+49:07,and one plate of samosa and now see what happened is it first of
+49:15,all recognized that as order dot add intent so that part worked
+49:21,pretty well also in terms of parameter see food item whatever Dosa and Samosa were recognized
+49:27,as a food item and two and one were number
+49:33,after doing this you can say hey add one mango let's see two
+49:40,and see once again order dot add one mangola C so mangoes is recognized as a
+49:47,food item and one is a number you can see the entire response uh in terms of
+49:53,your Json API response this is something we'll be using when we write our fast API backend but here you can see food
+49:59,atom is Mangalore C this is one and so on so this is working as expected now
+50:07,what can happen is the conversations are not perfect they will say hey add pizzas
+50:14,well but how many pizzas they didn't specify it okay and here
+50:20,see the chatbot is not smart enough it should say how many pizzas you want okay
+50:25,or specify food quantity for this you have to make both of these a required
+50:32,parameter okay so here go down here and just make them require parameter and if
+50:38,they are not specifying any parameter you need to have a prompt you can say
+50:45,please clearly specify a food quantity
+50:52,and you can just give example uh you know I want
+50:57,two pizzas or three chole but or you can say it using
+51:04,word you don't have to specify the number all the time so that is the prompt
+51:13,for the food item you can say please
+51:19,specify food item from this list and that list is the list we can get it
+51:27,from the default intent I think okay uh not not default I think in new DOT
+51:34,order we supplied that list so you can say please specify
+51:40,it from this list now when say hey add pizzas
+51:46,I previously forgot to save it so whenever you are adding something make sure you hit the save now when I say hey
+51:52,add pizzas it will say please specify the food quantity and without that it's
+51:58,not gonna work you can say hey I want three Samosa but let's say I've forgot
+52:04,to write samosa I want 3 what
+52:10,okay if I want three Samosa okay somehow it's recognizing this as a food item
+52:17,Pizza by default I don't know why it is doing that but let's take another example I want two plate of Pani Puri
+52:28,so we don't have panipur in our food menu so now it is saying please specify the food items from this list because it
+52:35,did not get the food item and because of the prompt that you have it is giving
+52:41,that guidance to the user so far it looks good now let's discuss something
+52:46,very important called context let's say you have conversation like this new
+52:52,order or track order and directly you say remove whatever your chat board will be confused what are you talking remove
+52:58,whatever from where so human conversations will always have
+53:03,a context context means whatever I previously said you need to have that in memory and then when I say new thing you
+53:11,need to relate that to what I said previously so here here remove what a pound doesn't make any sense but if the
+53:19,same conversation is like this see New Order what would you like to have what about to Biryani what else now
+53:26,when I say hey remove whatever that makes sense because you have a clear context
+53:33,so we need to define the context in dialog flow here when I start a new
+53:39,order your context is New Order you can Define it in any possible way I'm going
+53:46,to give the name ongoing order this context name you can whatever it can be
+53:52,ABC whatever name you want to give I will say it is an ongoing order context
+53:57,when you start a new tracking that is an ongoing tracking
+54:04,so in that ongoing order you can have other intents such as you might add
+54:10,things to your order you might remove things from your order when you have ongoing tracking you might give multiple
+54:18,tracking IDs but let's say if your context is ongoing tracking and if you say hey remove it upon that doesn't make
+54:24,sense board will be confused so whenever you say statement like hey remove word upon one word upon to Biryani it has to
+54:31,be in this kind of context okay so we already defined a new order and Order dot add intent so
+54:40,that is that is this is order dot add intent but this has to be in the context ongoing order
+54:46,remove should also be in the context ongoing order so let's define these
+54:52,things here in in our dialog flow in the way I do that is whenever you are
+54:58,starting a new order in the context you have input context and output contacts so in the output
+55:05,context you will say ongoing order see it's just a simple text you type in and
+55:11,this Phi means conversation turns lifespan for how many iterations meaning
+55:16,when I say hey how are you uh hello whatever that is one conversation done
+55:23,for example this is one conversation done okay boat end user that is bad that
+55:29,is one this is another conversation term this is third conversion term Phi is
+55:34,good enough if you want to edit it you can just go and say seven okay I'll just keep this as a default value ongoing
+55:40,order so that is the context whenever you say new order for example look at this whenever you say New Order you are
+55:48,starting that new context that's why it is in output context but when I come to this intent okay adding an order my
+55:56,ongoing order context is already set so it will be input as well as output
+56:02,context so let's let's do that uh here you can hit save and then go to your
+56:09,order ad and in both input and output context it will be ongoing so ongoing
+56:15,order and ongoing order okay because after you say air three Biryani
+56:20,you can say just add two mango let's see you can keep on adding one by one that's why it is in the output as well and when
+56:28,you do that you will see that context appearing on the right hand side so let's do that so I'll say hey then I
+56:35,will say New Order when I say New Order the context is ongoing order now I will
+56:41,say I want two pizzas and the context is still
+56:47,ongoing order okay so you can keep on adding that now let's add uh the order
+56:54,dot remove intent so here I will say order dot removed because you might
+57:01,potentially remove and now now we will use a different uh different convention which is whenever
+57:09,you are adding any intent which also has a context so here there will be ongoing order context
+57:17,okay input and output both so whenever you have context in your intent I will say context
+57:24,colon ongoing order this is just a naming convention I am using okay nothing
+57:30,nothing fancy here as such and the same thing I will now change order dot add
+57:36,and I will say context ongoing order
+57:41,okay whenever you see this uh rotating uh cogwheel you have to wait because
+57:47,it's kind of training and that was the reason some some of the times these things don't work you have to wait till
+57:53,the this rotation is complete okay so I have now total four intents these two
+57:59,have context set in it okay what's gonna happen in a remove context let's add
+58:05,some training phrases once again to save the time I will use my
+58:12,I'll just copy paste things from here uh so let's say this and now you'll realize that it is auto
+58:20,recognizing this in Samosa as one of the entities so I will do I will add all of
+58:27,this and we'll be back after some time
+58:33,I also assigned the entities most of it was assigned already but if it doesn't
+58:40,then make sure you are just highlighting and assigning it in the response you can say
+58:46,removed Dollar food item hit save and I'll show you what happens
+58:53,due to this when you say remove Pizza it will say pizza remote okay so I can say remove
+59:00,Samosa for example and it will say remove Samosa so that is what happens when you give this kind of text response
+59:07,what I did is just to save time on recording I already added the other intents which was tracking order for
+59:14,example right so here uh the context I have defined it as ongoing tracking
+59:20,which will be set whenever you are placing a tag order see output context is ongoing tracking then here I think in
+59:28,the tax response you should say what is your order ID so I have added all of those things here and here in the file
+59:36,you will see all those things so make sure you are using this file adding all the responses and the intent
+59:42,in an appropriate way and looks like my chatbot is kind of ready we have still
+59:48,not hooked this with a back end so it will not do a complete end-to-end work but at least we can now check the whole
+59:56,flow so I will say hi it is saying New Order or track order which is good then
+1:00:03,I will say New Order okay I want to show laboratory and one
+1:00:10,mango let's see and it is the matching the indent also
+1:00:17,in the food item in numbers you're getting the right quantities oh add one
+1:00:23,Samosa as well and once again it is matching that one samosa
+1:00:29,so that is accurate please remove mango Lassie we want to check if it is
+1:00:35,matching the see now sometimes people can say remove
+1:00:42,mango let's say they might make a spelling error so instead of 2s I'm saying one Lassie
+1:00:49,okay that did not quite match actually let's see
+1:00:55,yes so mango let's say it did not recognize that so let's see what's going
+1:01:01,on so in our entities food items
+1:01:06,uh we have mango lassi so I've seen this sometimes it doesn't work uh you have to
+1:01:12,do more training and it might work so mango let's see synonym is specified
+1:01:18,let's check our intent remove intent do we have that kind of training phrase
+1:01:24,here remove Pizza from my order we don't have just remove
+1:01:30,I'll just add that remove some also and I'll just say save
+1:01:36,it will require a lot of training iterations folks so you have to be patient Supply as many training phrases
+1:01:43,as you can this is still spinning will wait till that stops
+1:01:50,okay now let's try it remove mango let's see
+1:01:55,okay please can you remove mango
+1:02:01,let's see this is still ongoing order it did not
+1:02:07,match the food item why is it not matching so this is removed from also remove angle let's see
+1:02:13,uh okay looks like folks that could be a delay I have seen this or there is a
+1:02:19,delay but we are going to assume this is all setup okay working it and then you
+1:02:25,can say that's it so it will match the order complete
+1:02:31,intent which I have created already by the way so see order complete just to save time so right now if you're
+1:02:38,practicing make sure you are adding this particular intent order complete where
+1:02:43,the input context is ongoing order and see when the people they finish the
+1:02:49,order what would they say place an order uh no thank you uh because uh when
+1:02:54,you're adding any item let me show you that part here what you will say is in the text
+1:03:00,response you will say anything else
+1:03:05,right when you call someone for food order they'll say okay two Pisa one mangular C they'll say anything else
+1:03:12,you'll say yeah too okay uh that's the reason you added anything else and in
+1:03:20,the other intent now you have to say uh let's see where it is order complete
+1:03:27,you will say place an order no thank you let me just show you here so you will start with New Order okay you will say
+1:03:34,two pizzas N1 mango lesson
+1:03:39,now you're saying anything else do you want anything else you say nope
+1:03:45,that's it and it will match order complete indent so it will say so here
+1:03:51,awesome your order is placed say awesome your order is placed here is your order ID okay so we have kind of rough
+1:03:57,skeleton ready if you want to test it you will go to Integrations and here click on web demo you'll just say enable
+1:04:06,after enabling you'll click on this and this kind of chat board will come up
+1:04:12,you will say hi and you'll send new order you will say
+1:04:19,to Pizza one let's see anything else you'll say yes
+1:04:26,[Music] okay see I did not say how many what about
+1:04:31,that's why it's saying yes one word upon you have to say one two anything else
+1:04:37,uh nope that's it and now see awesome you are already
+1:04:43,placed so the skeleton is working now let's work on integrating our backend
+1:04:50,and how do you do that well you do it through something called fulfillment
+1:04:57,so here in order add if you scroll down you will see this fulfillment section
+1:05:03,and here I am going to say enable web hook for this intent what is webhook
+1:05:11,when you add anything into your order you want to call a backend
+1:05:19,okay so let me hit save here and then we will go to fulfillment here in the
+1:05:26,Fulfillment you can have Google cloud function if you have deployed your backend as a Google Cloud function you
+1:05:31,can use that but I'm going to use a web hook in the web hook you have to specify the URL where your backend server is
+1:05:39,running okay now you will need some knowledge of fast API for this so just go to YouTube
+1:05:47,and just say code Basics fast API
+1:05:52,and you will find this tutorial if you don't know first API I suggest you watch
+1:05:58,it so that your fundamentals are clear I will still go over some of the fundamentals here in this video but that
+1:06:04,is what we are using for the Fulfillment all right so our overall architecture is
+1:06:10,going to be dialogflow will recognize the intent and the entities then we will
+1:06:15,call our fast API backend server that will be a python code which will save or
+1:06:21,retrieve records from my SQL database as a prerequisite for building backend we
+1:06:27,need to set up our database first we are using MySQL I have installed MySQL
+1:06:32,workbench if you don't know about MySQL Etc go to YouTube say code Basics MySQL
+1:06:38,tutorial you'll find my tutorial so it will tell you how to install and just the basics of it
+1:06:45,we are going to import the database for our food business and the way you do
+1:06:51,that is you go to server data import from self-contained file now the folder
+1:07:00,that you have downloaded it has this database subfolder which will have
+1:07:06,this particular SQL file so just copy the path of that
+1:07:12,SQL file here okay I'm going to use that
+1:07:18,and just say hit import and let's see if we need to select any
+1:07:23,other options yeah this looks good and that will import the database you hit the refresh icon and you will see
+1:07:30,this database here right click and say set or as default schema
+1:07:37,now in terms of tables we have food item table if you click on this particular icon
+1:07:42,you will see all the items that we have which is see Power version
+1:07:48,Etc these are item IDs and these are the price let's say six dollar seven dollar
+1:07:53,Etc then you can go to orders table click here and we already have some existing
+1:08:00,orders in this table so the way order works is let's say
+1:08:05,someone ordered this 40 so 40 order ID has what so 40 order ID has
+1:08:12,item number one and item number one is pav bhaji actually so this person
+1:08:18,ordered how many quantity two and then the second ID he has is three
+1:08:26,which is pizza so he ordered one pizza okay so e order to pav bhaji and one pizza so
+1:08:36,that is one order and the second order is this 41. so you can kind of understand the design here and the total
+1:08:44,price is for this one so one pound boy G is six dollars so two will be 12 so you
+1:08:51,see 12 here then similarly item number four is let's say mangola C price for one mango list
+1:08:58,is five and since you order three five into three it will be fifteen dollars pretty
+1:09:04,straightforward database design here and the third table is order tracking
+1:09:10,where you will see in what status the order is when someone places an order it
+1:09:16,will be in progress then when the order is ready it will be
+1:09:22,ready status and then when order gets delivered let's assume it or swiggy guy comes picks up the order and then when
+1:09:29,they are delivering it to your home in between the order is in in transit status so there are various status see
+1:09:36,for example this order is in in transit and when order gets delivered it will be in delivered status
+1:09:43,so that's the basic setup we have for the database you can go through the
+1:09:48,columns Etc just to understand database design if you click on the second icon see use the primary key Etc I hope you
+1:09:55,have some basic SQL knowledge if you don't once again go to YouTube look for
+1:10:01,any MySQL tutorial you can say code Basics MySQL tutorial just get your fundamentals clear otherwise see it's
+1:10:08,pretty in due to anyways so as you work on uh this particular tutorial you will
+1:10:13,get more understanding now let's do our backend setup we are going to use pycharm as an editor if you don't have
+1:10:19,pycham installed just Google pychon Community Edition and install it for
+1:10:24,Windows or Mac whatever OS you have so this is a community version you should click on this download and then when you
+1:10:31,launch it it will ask you to open an existing project okay so here maybe you
+1:10:38,can open the or the code that we I have already given it to you or I think that
+1:10:44,better idea is you create a new project okay so what you will do is you will go
+1:10:50,to let's say C directory let's say I have this code folder okay and I have uh
+1:10:57,now created a new folder called food chatbot
+1:11:03,let's let's create that folder and then you just say open and from open you will select that
+1:11:12,directory C code and then food chatbot and okay so you're opening
+1:11:18,that particular folder here so here in this folder we already see this file main dot Pi so which is good enough
+1:11:27,here first thing we are going to do is install couple of modules so those
+1:11:33,modules are fast API first of all so let me show you how to install it probably
+1:11:38,you know the way to install it in Python which is PIP install use a pip install
+1:11:45,fast API all this is how you will install fast API and uvcon which is
+1:11:51,something we will use to run the fast API backend so first run that
+1:11:56,uh and if you are looking for some documentation you can go to Google Just
+1:12:02,say fast API tutorial you will find this particular link and they have a very nice page you can see all the help here
+1:12:09,people install fast API all when you do that it will install two things the first API package itself in uvicon which
+1:12:17,is something we'll use to run the backend server the other thing you want to use is my SQL connector so my SQL
+1:12:25,let's see what is the name my SQL it is called MySQL I have by the way
+1:12:31,requirement.txt file uh just in case so here the requirement.txt file says that MySQL
+1:12:40,connector python so let me copy paste that
+1:12:50,okay so these are the two modules you're installing I already have is installed that's why you see this message you can
+1:12:55,also use my requirement.txt file which you have downloaded here once you've put that file let's say I copy this file
+1:13:02,here uh this is another way of installing those two modules I think you should
+1:13:07,have some Basics clear for python you should know how to do these things so
+1:13:12,here let me go to this particular folder it's called food
+1:13:18,and once I'm in that folder I can also do since I have requirement.txt file what
+1:13:25,this will do is essentially it will just install these two modules which are
+1:13:31,specified so either you install manually or through requirement.txt file all right my installation part is over now
+1:13:38,for first API we will set up the basic server once again you can go to YouTube
+1:13:44,and look at my video or if you don't want to go through the whole video Let's copy paste this code and run our first
+1:13:51,server okay so that is in main dot pi
+1:13:57,so this is the code that we wrote We imported fast API class from the module
+1:14:03,and here we are just writing a basic routine that is the entry point for our
+1:14:10,backend server so just say save and then go to your console so here I will run it
+1:14:16,from terminal here okay and the way you do that is by saying uvcon main app reload and when you do
+1:14:25,that it will run a server on this particular address
+1:14:32,127001 colon 8000 and when I go and look
+1:14:38,at that server here in my see it says hello world by the way
+1:14:45,localhost and 12700.1 they both are same thing and when I hit this particular URL
+1:14:54,it will go to This Server because this server is running on 8000 port and it will print this particular message you
+1:15:01,can just change the message if you want okay so my basic uh fast API backend is
+1:15:08,all set up basically the skeleton is set up now let's add our code and in terms
+1:15:14,of our code what we're going to do is we'll first tackle the track order okay
+1:15:20,so track order is you give a order ID and it will tell you which status uh the
+1:15:26,order is in uh we looked at the database already we have two orders 1441 so we
+1:15:33,will say Okay 40 then it should return deliver 41 it should return in transit
+1:15:38,so we'll tackle that piece first because that's relatively easier so let's go to
+1:15:43,our dialog flow and set up to the Fulfillment okay so I will
+1:15:50,go here uh let me just manage it here and
+1:15:55,go to fulfillment just say enable the webhook and here you are
+1:16:02,going to specify the URL what is our URL our URL is this
+1:16:08,it is http okay see we are seeing an error fulfillment
+1:16:15,URL must be https so https is a secure HTTP protocol what
+1:16:22,we are running right now is HTTP so that's not gonna work and
+1:16:27,how do you now set up https so what I did is I asked this question to chat GPT
+1:16:34,and chagibit told me that I need to install something called ngrok
+1:16:40,okay so just go to Google and just say ngrok install I'll tell you what it does
+1:16:46,it's a simple tool so you go to here then for Windows I have Windows machine
+1:16:52,just download this file so when you download this file obviously it is a ZIP
+1:16:58,file when you extract it all it will uh
+1:17:05,give you this dot exe file so this dot exe file I am going to go into my
+1:17:11,directory and copy so in the food chat board I will copy that file here
+1:17:17,this file will create something called an secure tunnel now what is secure
+1:17:24,tunnel let me just show it so that you get an idea so first of all you need to open a
+1:17:30,command prompt so I will open a Windows command prompt by the way so this is Windows command prompt okay and you will
+1:17:38,go to see code 4
+1:17:43,and here you see ngraph.exe so ngrok http 8000. our server is running on 8000
+1:17:52,port and the protocol that we are using right now is http
+1:17:57,so let's see what happens when I do this when I do this
+1:18:02,it will give me uh let me just make yeah it will give me mapping of this HTTP to
+1:18:10,https what I mean by this is I can access the same server using this link
+1:18:17,it's like an alias it is creating another link but this particular link
+1:18:22,now is a secure link okay and you will do
+1:18:28,https okay no connection made okay it says bad gateway maybe I should do it
+1:18:35,again so let's do it oh yeah I made a mistake it should be 8 000. there was a
+1:18:42,typo here it should be 8000 I said 800.
+1:18:49,see now you are seeing the same message so what is the difference now now you
+1:18:54,are calling it using https previously you are calling it using http
+1:19:01,okay so at least this requirement is cleared out I can go and copy paste this
+1:19:06,in my dialog flow so in dialogflow we'll be using this particular URL as our web
+1:19:12,hook um auth all these things you can keep it empty and just hit save now to write the
+1:19:18,implementation for track order handling I went to my best friend Mr C yes chat
+1:19:24,GPT and I say that I want to write python code using fast repair backend I have two intense order add order remove
+1:19:32,let's write function for it and chat GPD does pretty good job with writing these
+1:19:38,uh handlers okay so all we are going to do is copy paste this code of course we'll understand what this code is we'll
+1:19:45,copy paste uh and it's folks it see it's completely okay to use chat GPT as your
+1:19:52,helper because it helps you save time you might not know the syntax you might
+1:19:57,not know that to get intent you have to go to query result and all these parameters but chatgpt knows it so you
+1:20:04,can use that gpt's knowledge and expertise here and it is completely okay to use it to write code in fact if you
+1:20:11,don't use it to write code you will be behind because you will spend lot of time figuring like syntax related things
+1:20:18,out so here I copy pasted that routine okay
+1:20:24,and now see here chat GPT kind of generates different type of code so this
+1:20:29,time it generated different code but previously when I was using it it generated Discord so I'm just using that and and both of the codes are fine okay
+1:20:37,so our entry point Main entry point in the server is handle request so this
+1:20:44,request that you're getting will be what dialog flow is sending now you'll you'll be like okay where do I see dialog for
+1:20:50,flow request well here you can go to dialogflow okay and if you type any
+1:20:58,intent let's say you say uh hey and if you say track order
+1:21:05,in diagnostic info you will see that request so let's see this request okay
+1:21:10,this request has response ID query result then it will have intent
+1:21:16,things like that so query text is this
+1:21:22,and where is query result uh okay I think we need to let me do this
+1:21:29,so here in the track order I will go and I will
+1:21:35,say fulfillment enable web hook call for fulfillment
+1:21:40,then only it will go and hit the backend so just say save here just say hi
+1:21:47,and just say track order and it regenerate a request
+1:21:52,so what is the request the request looks something like this it has
+1:22:00,intent which is intent and display name will have the exit intent so if you look
+1:22:05,at our back end that's what we are doing so we have a payload which has a query result element
+1:22:12,if you see here see this is the payload this is the whole payload query result is sub element under query
+1:22:20,result you have intent and then display name so under query result you have
+1:22:26,intended display name so you get intent so what is your intent tractor or order okay now what are the parameters you
+1:22:34,need to get parameters too so this is query result and parameters so query result parameters
+1:22:40,right now parameters are empty because we are giving that parameter in the next conversation turn
+1:22:46,so this will have the parameters which you will copy here and you will also have the output context the whole output
+1:22:53,context you will grab it in this particular element now you can say if
+1:22:58,intent is equal to a track order
+1:23:08,then you need to fulfill fulfill means you need to say I received your response
+1:23:15,and the way you do that is by the way again syntaxial sugar you can always use
+1:23:21,chat GPT to figure out how it should look like and chat GPT is telling me you
+1:23:27,can return it like this okay return whatever message and I'm going to use
+1:23:32,what chat GPT gave me previously which is both both of these things are valid by the way you can say received
+1:23:40,whatever intent let's say you received track order correct so I will say
+1:23:45,received track order and I will just put this thing so that
+1:23:51,you know that this is the internet is Reading in the back end
+1:23:57,just say hit save uh this is just a skeleton just to figure out the connection that request
+1:24:03,is going to backend and response is correctly coming back in my uh dialog
+1:24:09,flow so let's go to dialogflow and test this out really quick Here track order has fulfillment enable
+1:24:16,previously we were saying what is the order ID Etc uh you know what I should probably enable uh this fulfillment on
+1:24:24,the other one because here when you say track order we are already asking please enter your order ID for this we don't
+1:24:31,need to go to backend if you remember see the conversion starts like hey what
+1:24:36,do you want to do now you say track order then dialog flow itself will say what is the order ID so for this you
+1:24:43,don't need to go to backend you need to go to backend to process that order ID and if you remember we have the second
+1:24:51,intent I think this is the intent where we should enable web hook track order context ongoing tracking
+1:24:57,here you will be accepting that order ID and you will be processing it so let's
+1:25:04,say user says ID is 453. at that time
+1:25:09,you need to enable the web hook so what will happen when you say enable webhook it will go it will call this
+1:25:16,particular URL when you call this URL our request will come here then you will
+1:25:23,recognize what is the intent so right now the intent is not track order but it is this one what is the intent name once
+1:25:30,again copy paste from here so this is the intent that you will get
+1:25:36,and upon receiving that you are saying do this thing okay now let me just uh and exit the Zen
+1:25:46,mode I'm in the Zen mode by the way I was meditating and since we run that that thing
+1:25:54,remember we ran that uh uicon main app reload what happens now
+1:26:01,is since you said a Reload whenever you make any code change and when you say
+1:26:06,Ctrl s to save it it will restart that server so my server is already running I
+1:26:13,don't need to run that particular command again so now everything is set we can in fact
+1:26:19,do our testing so let's do it I will say hey okay then track order
+1:26:26,okay what is my order ID I will say 41.
+1:26:32,and see now it is saying received so at least it is hitting the back end hurray
+1:26:37,we checked the end-to-end connection it is receiving this particular intent in
+1:26:44,the back end so that part is very well tested now but obviously we don't want
+1:26:51,to send that dummy message we want to send the actual status so we have to do something here
+1:26:57,okay what are we going to do so let's me let me go to my zen mode I want to
+1:27:03,meditate again uh it's a focus mode here
+1:27:09,Let's uh write another function for handling order so
+1:27:16,we'll say track order and what should that function receive well I can receive
+1:27:24,order ID directly but what I'll do is I will write a generic function which receives these three things intent
+1:27:30,parameter and output contacts so that you kind of get everything in one shot
+1:27:35,so let me get parameters first I think parameters is enough
+1:27:41,parameters this parameters is a dictionary by the way so I will use Python hint type hint
+1:27:48,and just say dictionary I don't need intent or output context because intent is already
+1:27:54,classified here you know it is tracking order so you don't need to send that
+1:27:59,and this is it now you will get the order ID from
+1:28:07,here so let me do this thing here what I will say is
+1:28:12,called a call track order and Supply parameters
+1:28:18,and from track order I want to send back the response so where is my
+1:28:26,order ID so I am receiving parameters how do I get order ID from parameter
+1:28:31,let's go back to dialog flow and here let's check this diagnostic info and in
+1:28:38,the request you will see that order is under query result parameters and order
+1:28:44,order ID and it's a dictionary so we only get query result parameters into
+1:28:49,parameters So within parameters if I say order ID so my order ID is
+1:28:57,this this is how you get an order ID once you have the order you need to Now
+1:29:03,call our database and from database you need to retrieve that information once
+1:29:11,again I'm going to use my best friend Mr C and I said
+1:29:17,hey I have mySQL database which has this particular table it has a
+1:29:22,column called status primary key order ID write a python code that can get me a
+1:29:27,status and look at this it first tells me hey dude you need to install MySQL
+1:29:33,connector python which already we already did and it gave me this
+1:29:38,beautiful code I checked it the code works like a charm so we will just use
+1:29:45,this particular code here and we are going to create a separate file by the way I can see I can I can
+1:29:52,put all my database handling in the same file but it's always a good idea to
+1:29:57,create separate files so I will create a new file what should we call it
+1:30:03,um DB helper maybe foreign
+1:30:10,API helper you will say API underscore Helper and so on and here I am going to just copy paste
+1:30:20,all this code copy code you will see chat GPT improves your
+1:30:27,productivity by a whole lot okay and you've got this thing here
+1:30:34,and I'll just change the credential Etc so you know my local it's my localhost
+1:30:40,my root password and my database is called Pandey G itray if you check in
+1:30:47,our MySQL see Pandey E3 that's why I have that
+1:30:53,and this function I can remove this get order status because we already established a
+1:31:00,connection through this Global variable uh
+1:31:05,and then here we are running this function called
+1:31:11,select get order status which takes order ID as an input and here we are
+1:31:17,running a query you are executing it fetch one cursor close I think this
+1:31:22,looks perfect see now I can call this function here so
+1:31:27,we'll first import import DB Helper and from DB helper
+1:31:34,DB helper will say get order status this will be our status
+1:31:42,here so you can say status is this and what should we do
+1:31:48,next so we got the order status now if there is a database error Etc you can
+1:31:54,still get none as a status so if you have ordered status
+1:32:00,then your message should look like uh okay let me create this fulfillment text
+1:32:07,variable and my message is going to look something like this I'm just using copy paste to save time on recording folks
+1:32:13,but it will be the order status for order ID this is order underscore status
+1:32:19,we are using python format strings here and otherwise you can say be found error
+1:32:26,or something sum message which accurately conveys to user that we had
+1:32:31,difficulty finding the order that you give and in the Fulfillment text now I
+1:32:37,can just say this hit Ctrl s save it will restart the
+1:32:44,server Let's test the whole scenario again from our dialog flow I'll go here
+1:32:51,I will usually I have this habit of resetting context so that the previous chat session just clears out I will
+1:32:58,start all over again I'll say Hey Okay track my order
+1:33:04,41 is my order and we got some error so let's see what happened
+1:33:09,okay if you're getting any error you can go to fulfillment status and looks like there was some error failed to pass web
+1:33:17,hook Json expected message object but got null so
+1:33:22,I will go to my backend first and I don't see any problem here
+1:33:29,and here also there is no issue okay I think the problem here is
+1:33:35,although we are returning Json response from here but look at this from our main function
+1:33:42,we are not returning that so whatever response we get here we need to store it in response here
+1:33:50,and we return response or we just you know just to make it easier we just save
+1:33:57,this and just say hit save it will restart the server and come back here just say
+1:34:04,again 41 and it will say the order is in transit hooray but it says 41.0 well we can
+1:34:12,handle that that's probably okay here you can just say end order
+1:34:17,something like that correct so if you do end order it will not do that
+1:34:24,dot zero message this one so 41 42.
+1:34:30,no order found with order id42 which is correct because if you look at our table we don't have
+1:34:37,anything in 42 let's say 40 40 is delivered so you give 40 as an order ID
+1:34:42,and it will say it is delivered no it is not saying that okay what happened let's
+1:34:48,see okay my SQL connection is not available
+1:34:54,I think I need to close my connection probably that is why this is happening there are
+1:35:01,some issue with my DB so let's see if I'm closing so here I'm closing the
+1:35:07,connection and when I close the connection uh it is not available yeah so I I don't
+1:35:16,need to close the connection as such because I will have that connection open and I I
+1:35:22,want to perform this query so again let's restart this server and let's try this out again
+1:35:28,now you will give different texts so instead of just giving okay let's do all all of this again so I will say reset
+1:35:36,contacts I will say hey it will say New Order track order okay track order
+1:35:41,what is your order ID I will tell here is my order ID
+1:35:48,56. no order found with 56 so you notice two
+1:35:53,things I did not give exit text see I said here is my order ID equal to 56. now I have
+1:36:00,here is my order number you see I don't have the exit tax but dialog flows NLP
+1:36:06,classification is able to detect that this means this particular intent so it
+1:36:12,is matching this intensity it doesn't have to be same training phrase that you gave during training
+1:36:17,uh so 56 is not found when you say 40
+1:36:22,say it is saying delivered hooray so see we made a very good progress and we
+1:36:28,already have a track order intent implemented now
+1:36:33,let's move on to the other intent the question is for which other intents we need to have this web hook calling
+1:36:41,we already implemented ongoing tracking track order doesn't need any fulfillment
+1:36:47,let's look at New Order New Order also doesn't need any fulfillment because when you create a
+1:36:53,new order here it is saying create a new order place a new order Etc okay so see
+1:36:59,this intent gets generated when you say let me reset the context here
+1:37:05,when you say hey and when you say new order at that time this new DOT order
+1:37:11,see this intense gets generated now to handle this intent you don't need any back end because you're only just giving
+1:37:17,a fixed response so for this particular intent fix response from dialogflow is
+1:37:23,enough you don't need to call fast API now as a next section person will say
+1:37:28,to pizzas and one mango let's see at
+1:37:34,this time let's see what we need to do we are not committing the order to database yet we are asking user do you
+1:37:41,need anything else and for that we use this this other indent so let's let's go there so order
+1:37:48,dot add so we are invoking this intent we are taking food item quantity and we
+1:37:55,are storing it in some temporary buffer so you are saying okay anything else
+1:38:00,anything else and you're saving it in temporary buffer okay so what is that
+1:38:06,buffer by the way we need to think about it where do we store that data because user might have
+1:38:12,converges and you'll say oh no added one Dosa or remove one mango let's see dialogflow doesn't have any facility
+1:38:20,where you can store all this temporary information you have to go to our backend so we need to enable web hook
+1:38:26,for sure so which I have already done here and in the back end we need to have some temporary variable where we store
+1:38:33,all that information now one idea is you can store that information in order
+1:38:39,table so you can have a transient order like the order which is not complete you can
+1:38:45,say this is in progress order so you can have a status column saying that in progress order or completed order and by
+1:38:51,the way that that status is different here okay this is a delivery status here this is the order status like user
+1:39:00,is still placing an order so I have decided to use just a back-end variable because I don't think we need to go to
+1:39:06,database in unnecessary complicated things uh so think about it if we have a
+1:39:13,python dictionary so let's say I have a dictionary here which stores session ID so every chat
+1:39:20,conversation you are doing is one session so you say hi Place New Order two Pizza this is the Bill thank you
+1:39:27,close the chat that is one session so if you have a dictionary where you have a session okay so this
+1:39:34,could be session id1 and here you store that order you say
+1:39:40,Okay pizzas too Samosa let's say one
+1:39:47,and when user says complete the order okay and by the way you can have a different session here so other user who
+1:39:54,is talking to your chat board might have a different session ID and they say Okay
+1:40:00,I want to put sholay order okay just one chole and that's it
+1:40:06,you can have this kind of session IDs in this common dictionary which we will
+1:40:11,call in progress order you can give any name okay so let's say you create this
+1:40:17,dictionary called in progress orders where you have all these things stored and when user says now I'm done please
+1:40:25,finish the order at that time you will take that order from this dictionary and
+1:40:30,store it in database I think that approach is going to work pause the video If you're not getting it it's really easy just just do some thinking
+1:40:37,uh you will find it pretty easy now where do we commit so when user
+1:40:43,say add this add that he will be invoking this ongoing order intent but
+1:40:49,when they say place an order done that's it you are invoking
+1:40:55,order complete intent at that time when this in time gets
+1:41:01,inward so let me enable the Fulfillment for this particular
+1:41:06,thing when this intent get uh invoked at that moment I will come here I will
+1:41:13,take that order and insert that record in a database okay so that's the overall design so let's create this particular
+1:41:22,variable it will be a global variable and here
+1:41:29,I will handle all the other intents so what is
+1:41:35,the other intent that we have the other intent is order complete
+1:41:41,okay actually we have one more which is
+1:41:47,intent is equal to which is the other one this one order
+1:41:54,dot add and then order dot remove also
+1:42:01,so you will do all your handling uh
+1:42:07,so you are realizing there are a lot of ifas condition and I'm thinking what
+1:42:13,could be a better way to handle I don't want to have this big if else condition I just want to have a mapping see this
+1:42:19,is a mapping if it is track order call track order function if it is order add
+1:42:25,then you will call some function call add to order we'll Define that function
+1:42:30,but essentially you have intent and for each intent you are calling a unique function and luckily for all the
+1:42:36,functions parameters are same so it's gonna work if you create maybe a
+1:42:42,dictionary so let's say if I create this kind of dictionary here intent Handler dictionary
+1:42:50,where you have intent in the function you are calling is also called like a routing table you are routing this call
+1:42:56,to here this call to there Etc I think that will work and that will
+1:43:01,avoid the need of this big and ugly if else condition and then what you can do
+1:43:07,is see you have intent correct so when you pass an intend into a dictionary place
+1:43:14,the order add intent it will give you a function so this will be replaced by this
+1:43:20,function correct so let's say if you replace this by this function how do you call this function
+1:43:27,value add parameters and session ID you need to add parameters in session it
+1:43:33,so let me just add parameter session I will talk about it later uh you need to just give parameters
+1:43:40,and that add to our order is nothing but when you supply intend into that
+1:43:46,dictionary you get one of these functions and you call that function by calling this so I hope that thing is
+1:43:53,very clear to you let's now Define our add to order function
+1:44:00,so Define add to order
+1:44:05,and here we have parameters dictionary
+1:44:11,and by the way uh I will for now Ctrl slash I will just hide this
+1:44:18,uh and just handle these two or where do you get your food item so first you need
+1:44:24,to get food item and quantities so how do you get that let's look at dialog
+1:44:30,flow once again and look at the diagnostic info so food items are under parameters under
+1:44:37,parameters if you say food item you get that and number you get the number so let's get those two here
+1:44:45,so food items numbers you got it now what if someone is not supplying equal
+1:44:51,number of arguments here if someone says add
+1:44:57,pizza and two mango let's see now we want the parameters to be same
+1:45:03,here okay but here what's happening is you have two uh items in the list here
+1:45:09,whereas here you have only one one item so I'm going to just say
+1:45:15,if Lan of food items is not equal to line
+1:45:20,of quantities then you you need to specify the
+1:45:26,quantities clear we don't want to handle it we want to keep things simple and say hey specify
+1:45:31,quantities clearly otherwise I will say
+1:45:41,received what what did we receive items and
+1:45:48,quantities in the back end once again I'm just testing the flow and then we'll
+1:45:54,implement it and after that what you do is
+1:46:01,you return this Ctrl s
+1:46:07,and now let's test the add to order scenario
+1:46:12,so here I will just reset everything start all over again hey
+1:46:17,new order two pizzas and one mangola 6.
+1:46:23,see it works received Pizza mangula C and this in the back end so it came all
+1:46:30,the way traveled all the way till here and it is returning the response but if
+1:46:36,you don't give similar quantities so I will say add
+1:46:42,to Mango let's see and shoulder but I'm not specifying how
+1:46:48,many it will say sorry I didn't understand can you please specify food items and quantities clearly so
+1:46:56,this will not work but if I do two level today that will work see this is this 2 2 so
+1:47:04,it's 2 and 2 so it is passing the language so here it says two it is converting it into a number so far we
+1:47:11,are returning just the fixed response now let's think how we can aggregate our
+1:47:17,order by aggregate what I mean is a user might say initially I need two Pizza
+1:47:27,and one Samosa let's say and in the second statement when chatbot
+1:47:33,says do you need anything else they will say oh well add one mango lassi
+1:47:41,they can give their a wish or the items one by one
+1:47:47,so what we need to do is when they say this we will be making a call to our add
+1:47:54,to order function correct so here in this function we need to create a dictionary somehow which
+1:48:03,says Pizza is two and Samosa is let's say one
+1:48:09,and when you give one more item to add it should update this dictionary
+1:48:15,and it should add mangola Cinder you need to remember
+1:48:21,it needs to remember the old item so your dictionary food item dictionary
+1:48:28,will look like something like this and when they say no that's it place an order
+1:48:34,at that time we'll take this and commit it into our database so let's not worry
+1:48:40,about saving it into database let's think how we can
+1:48:45,form this dictionary and all these orders might be coming in subsequent calls to this add to order function one
+1:48:53,thing we already discussed is we have this in progress order uh dictionary
+1:48:59,so we can use that dictionary here and we can append to that now going over
+1:49:05,architecture what will happen is you might have multiple chat boards see you
+1:49:12,might have multiple sessions when we deploy this into production there might be 100 users talking to these chat
+1:49:17,boards and there are multiple instances but these will call our backend server
+1:49:23,and our backend server also might have multiple instances running let's say we deploy our server uh in AWS
+1:49:31,or Google Cloud and we decide to run two instance or
+1:49:36,three instance of the server each of these servers might be handling multiple chat requests so you need to remember
+1:49:43,session ID so per chat request let's say this chat will have one session ID this
+1:49:48,will have a different session ID and based on that you need to create this kind of dictionary
+1:49:55,so in this dictionary the key will be session ID and for that session total order that users have placed so
+1:50:03,let's say uh session id1 is this particular conversation okay let's say this is session id1
+1:50:10,here they first say pizza and Samosa then there's a pizza Samosa and mango let's see so in that Session One Pizza
+1:50:17,Samosa and mangola soup okay
+1:50:24,this kind of a thing needs to happen so initially uh when they say add to order
+1:50:30,in our session ID we'll get this when they say add mango lassi at that time we
+1:50:36,will add it so you need to update the dictionary associated with that same
+1:50:41,session ID I hope this is making sense now if you think about it it's really a simple a computer science architectural
+1:50:48,principle that we are following so the first question that we need to ask is
+1:50:54,how do you get the SNL because that's the key if you look at dialog flow once
+1:51:00,again and if you look at the payload that payload should have a session ID so
+1:51:05,in this dialog flow request if you go to Output context
+1:51:11,see there is a session added here so after sessions whatever this string is
+1:51:17,it is session ID we already get output context correct if
+1:51:22,you look at our code we already have let me remove or let me just comment
+1:51:29,this part and output context so from this output
+1:51:34,context which looks something like this I want to get a session ID how do you
+1:51:40,get that well once again I asked chat GPT and if
+1:51:45,you do if you know about regular expressions in Python you should be able to figure it out your logic should be
+1:51:51,any string that appears between slash sessions and slash context that is your
+1:51:57,session ID so I asked that question GPT
+1:52:03,let's see where is that question yes I asked that question and it gave me this
+1:52:08,code and this is the right code so I tested this in regex101.com by the way if you
+1:52:14,don't know about regular Expressions I highly suggest that you develop that skill because as a python engineer or as
+1:52:21,a data scientist you need to have good knowledge on regular expression
+1:52:27,uh so I have a tutorial if you go to YouTube core Basics regex you will find
+1:52:32,this it's a 20-25 minute video but I go over all the fundamentals of regular
+1:52:37,expression so here using this website I tested it that when you have this kind
+1:52:43,of uh pattern it will extract the number between sessions and contacts so see it
+1:52:49,is extracting that number here if I change that number and if I say okay that number is let's say this number is
+1:52:57,456. see it will retrieve four five six so let's use this
+1:53:04,we are going to copy paste this code okay and I have already by the way created a function so I will just copy
+1:53:13,paste the whole function here and that function is called extracting session ID from the
+1:53:20,session stream so you give a session string and you let
+1:53:25,me import the re module here then from that string you can get the
+1:53:30,extracted string now I want to keep a separate file for these
+1:53:37,functions because we might add more functions like this in the future so what I'd like to do is I like to have
+1:53:43,this generic helper file so here you can say this is a generic helper dot pi and
+1:53:50,I will move this function there so let me move this function here maybe
+1:53:56,this one you can move it at the top and
+1:54:03,import this particular file here so you say import generic helper
+1:54:10,and when you want to extract that session string you will just say
+1:54:16,generic helper Dot extract session ID
+1:54:22,from the Assassin string now what is the session string well it is in the output context okay and in the output context
+1:54:31,you need to uh take the first elements output context
+1:54:38,by the way is the you see it's a list in that list take
+1:54:44,the first one and just say name so I'll take the first one and I will
+1:54:50,say name and that will give me the
+1:54:55,session ID which I can pass it to all my functions
+1:55:01,so this session ID I am going to pass it to
+1:55:07,all my functions okay so now I have the session ID
+1:55:14,if you want to test these functions individually what I do is if unders underscore name is equal to under
+1:55:21,underscore mean you can write a unit test also but let's let's test this
+1:55:27,function so in here let's give this particular string and let's see what happens
+1:55:35,so here I am going to give the string
+1:55:42,okay and I'm expecting it should return this string 7 F 23 and the long long
+1:55:48,string whatever it is so print and you can just right click and run it
+1:55:59,okay this code is not working as expected because it is
+1:56:06,returning sessions and context both you don't want that
+1:56:12,but actually let's see if that is the code that we had yes the extracted text
+1:56:19,should be match dot group one so I don't know if we did that match dot group one
+1:56:25,do we have that let's see actually should be group one not the
+1:56:31,whole string because in the if you know the fundamentals of regular expression the first one will be the whole match
+1:56:37,and group one will be whatever is in the bracket so that is what we want
+1:56:43,see now you're getting this string 7f if you change the string here
+1:56:49,okay so if I say one two three unless if that is my string
+1:56:55,session string so it will return me one two three so now you have tested this function you can rely that this function
+1:57:01,works okay and then you're using that function here 2x take the session ID okay so now I got
+1:57:09,session ID what do I do next so let's go back to here and here
+1:57:14,in the add to order function I am going to add the session ID string parameters
+1:57:20,so this is the parameter I am adding and here
+1:57:27,I need to do something with that not here actually here
+1:57:33,because this is the error condition so we are handling that anyway all right now
+1:57:39,let's look at our structure first you need to form this dictionary that is the first task then you need to
+1:57:46,put it in the in progress order dictionary how do you form this dictionary because
+1:57:51,what you have here is two separate lists so you have one list which contains the
+1:57:59,food items the other list can stay contains the numbers you want to create this kind of dictionary once again I
+1:58:06,asked my dear friend Chad GPT that I have this kind of tool list how
+1:58:13,do I convert this dictionary and it gave me this particular python code so Folks
+1:58:18,by watching this video today I am walking you through my process of
+1:58:24,how I build end-to-end applications and you are realizing I use chat GPT as
+1:58:30,a productivity tool of course I I try to understand that code so it's not I am blindly copying because chat GPD makes
+1:58:37,mistakes but it saves me lot of time in finding the syntax you know structuring the code
+1:58:44,and so on therefore I am a big fan of this tool I encourage all of you to use
+1:58:50,it you'll realize it will save you a lot of time so here
+1:58:56,if you're two lists like this and if you run this code it will create this
+1:59:02,dictionary if you don't believe chat GPT well you can test it in Python and the way you do that is you go to python
+1:59:09,console and in Python console you can type that
+1:59:16,and see print food addict and see it does work actually so I will
+1:59:24,just go ahead and use that code here so I will just say
+1:59:31,if Lan not equal to this then
+1:59:36,the food dictionary I'm using just that code okay so zip and then zip will create the
+1:59:43,pairs and dict will create the dictionary out of it so this will be the new food dictionary why do I call it new
+1:59:49,food dictionary because your existing uh dictionary might
+1:59:55,already have these two so say a user said I need two P's and one Samosa initially so you already have
+2:00:03,this dictionary okay so let's say you already have this particular dictionary
+2:00:09,and in the new call that you received when user said oh well add one mango
+2:00:15,let's see at that time you are going to get only this dictionary
+2:00:21,so you got only this dictionary now you need to append this dictionary into this
+2:00:27,one so that is our next step how do you take the session ID you have
+2:00:34,a session ID here you have a session ID along with session ID you have this dictionary and this
+2:00:40,dictionary is this new food dictionary that is a new incoming order
+2:00:45,first check if this session ID exists in the
+2:00:52,in progress order and if it exists then append but if it doesn't exist then you
+2:00:57,have to enter a key enter as a new key okay these are just basic dictionary fundamentals that I'm talking about so
+2:01:04,here you will say if session ID in in progress order
+2:01:12,then do something otherwise let's say session ID is not in the in progress order let's say you don't have this
+2:01:20,big deal then use what you do is you you take this session ID and just create the
+2:01:26,key value pair so let's do that first I will handle that scenario first I will
+2:01:31,say take the session ID and that is my new food deck
+2:01:38,but if it already exists let's say if this is the scenario if it
+2:01:43,already exists such as this as an id1
+2:01:51,unless you have something if it already exists then now you need
+2:01:56,to merge these two dictionaries okay so how do you merge this first let me get
+2:02:02,the old one so this is the old one okay I will call
+2:02:07,it current for dict that is your old one
+2:02:12,in this you need to append the new one so how do you do that once again chat GPD chat GPT is telling that if you have
+2:02:20,these two dictionaries if you want to update dictionary one you just say dict1 dot update dick2 and the
+2:02:27,addict one will be having all of these so this is the way you kind of merge
+2:02:34,two dictionaries so let's go back to python code and say
+2:02:41,current food dot update update it with new food deck and then
+2:02:48,you need to put it here back here
+2:02:54,I need to verify it will if it will automatically update because it's the same object so it should but just to be
+2:03:01,on a safe side I'll just put it here by the way you can verify in your code if it does then you don't need this
+2:03:07,particular line anyways now I took care of that logic where if this
+2:03:13,guy comes in then we are taking this here and we are updating
+2:03:19,it here perfect now I have my this thing so actually my goal is
+2:03:26,accomplished now I need to send this message back to my user saying that uh
+2:03:31,this thing is already updated okay so how do you do that for this particular order
+2:03:38,you want to return a message to a user saying that so far you have two pizza
+2:03:44,and one mango let's see you have this dictionary how do you convert it into this message where you are saying two
+2:03:50,Pisa one mangula C so you are essentially taking the value of the key in a dictionary first then the key then
+2:03:57,end then this and then mango let's see if you're just one recipes only you'll say
+2:04:03,you have two P's and that's it you will not have and Etc once again
+2:04:09,I use my friend chat GPD I'm saying I have this kind of dictionary write a
+2:04:15,Python program that outputs this see you want to convert this dictionary into
+2:04:21,this kind of text and once again uh chat GPD gave me the answer I think this has
+2:04:26,little mistake probably you need a list here for using list comprehension so I
+2:04:31,did some minor tweak and I figured it out so let's add that particular
+2:04:37,function in our generic helper so the generic helper we are going to add this
+2:04:43,new function called get string from food dictionary and that food dictionary that
+2:04:51,we're taking uh we're going to call that food addict which is a type hint of debt
+2:04:57,and here we will use whatever chat cptq plus I made some trick here
+2:05:04,so that is this and let's test this function
+2:05:10,so here print let's say get Str from footbrict let's
+2:05:18,say you have Samosa to foreign
+2:05:32,it is putting the value here first then this then chole and then this okay
+2:05:38,perfect so now let's use this function here
+2:05:44,so we're going to use this function from generic helper and create that string
+2:05:51,so here I think we will call that order string
+2:05:57,order string is generic helper
+2:06:03,and it is not a new food dictator just to be safe and secure I will just use whatever
+2:06:10,the in progress ordered dictionary is giving me back when I do in progress
+2:06:15,order session ID stationary is this it will return me this dictionary here
+2:06:21,which I am passing it to that function and this function anyway is converting that dictionary to this string
+2:06:28,and we we don't want to just set to so much of actually we want to say so far you have you know that kind of string
+2:06:35,so here let me change this to so far you have
+2:06:43,this order do you need anything else perfect I think it is looking good I mean if it
+2:06:50,is not then it will give error and we'll figure it out so you do control as to save it
+2:06:57,and let's see where we are yes it restarted it okay so now we'll go back
+2:07:03,to mgrok first by the way because it might time out hey so yeah one thing
+2:07:08,about ngrok you see restart and grocked if you have not created any account or anything this session will end after
+2:07:16,some time so remember to restart it so I'll do Ctrl C to end that session
+2:07:22,and then I will just restart it's the ngrok http
+2:07:28,800. and it restarted this session and my new string is this
+2:07:35,so just highlight and then write Mouse click so it will copy it and you will put it back into fulfillment
+2:07:43,I mean when you are in production you don't have to do it but since this is in development we are still building we
+2:07:49,have to do it if you don't want to go through all of this you have to go to and rock and I think register for an
+2:07:55,account that is one way to solve it all right now I think we are good
+2:08:01,okay okay let's try this I will say hey okay I will say New Order
+2:08:08,what do you want to order two pizzas and one mango let's see
+2:08:14,now see this is what happens so far you have two P seven mango let's see why
+2:08:20,because it created this particular order let me print the whole dictionary here
+2:08:27,so that you get an idea so I will print it here printed with star so that there is some
+2:08:33,kind of visual indication uh review print so you get a feeling of
+2:08:42,what's going on here so Ctrl s it is restarting and I will go back here reset
+2:08:47,everything I'll start over say hi then New Order then I will say two Pisa one mango let's
+2:08:55,see now look at this C star
+2:09:02,so in progress and oh actually you know what I want to print the session ID as well
+2:09:07,never mind we'll have to do it again so reset contacts do it all over again
+2:09:13,hi New Order two pizza and one mango let's see
+2:09:21,see this is the session ID this is the session ID that I was talking about session IDC session ID
+2:09:28,then you have pizza and mangola C now when I say chole it should append to this particular dictionary so let's say
+2:09:35,chole let's add some yummy chole only
+2:09:44,and it will work why did it work well remember in the entities you said
+2:09:56,and if you look at the dictionary now see I have chole but today here
+2:10:02,and if some user from some other session makes other order it will it will maintain that okay so looks like our
+2:10:11,ordering looks good now yes so I will just remove this print
+2:10:18,rest because we just added it to confirm few things now we are going to look at a very interesting part which is saving
+2:10:25,the order in a database once you have ordered all these you will say
+2:10:30,nope that's it or complete my order because chatbot is saying so far you have two Pizza one mango let's see two
+2:10:35,solo but today do you need anything else and then you will say no that's it that's it that's all I had
+2:10:43,and at that time the intent that is going to be triggered
+2:10:49,is this order complete context ongoing order
+2:10:54,in our backend we have that particular intent mapped here to a
+2:11:02,function called complete order and right now that function is empty so let's write some code for for that
+2:11:09,in this function you are getting a session ID so using that session ID you need to
+2:11:15,find a key in our in progress order dictionary because our in progress order dictionary looks something like this and
+2:11:22,if it's session id1 then this is the order you are saving to database if it is session id2 this is the order you are
+2:11:27,saying to your database so first check if session ID in in progress order
+2:11:35,if it is not in uh then it means you have some problem
+2:11:42,so in the Fulfillment text you will say you know what I'm having trouble finding
+2:11:47,your order you need to probably place your order again because I we don't have that order due to some error or
+2:11:54,something but let's say if you find that okay then
+2:12:00,your order the actual food order will be this
+2:12:05,and I'll just call it order so this order will get you let's say pizza mangolis Etc
+2:12:11,now you have to insert this record in a database and just to make things easier uh we should
+2:12:19,probably call a function called save to database let's let's create a new function called
+2:12:24,save to database which looks something like this save to DB
+2:12:32,order which is a dictionary all right now take a pause and let's
+2:12:38,think what we need to do in this particular function let's look at our database
+2:12:45,or in our database we have things like this we want to insert a next order in the orders table
+2:12:53,so first thing we need is order ID so what will be the order very well what we can do is just say whatever is my Max
+2:13:01,order ID add one to it that will be my next ID so max order ID is 41 so my next
+2:13:07,order ID will be 41 plus 1 which is 42 and to get Max order ID you know the
+2:13:13,function so select Max from orders select next
+2:13:19,order ID from orders and it gives 41.
+2:13:26,okay so let's let's write a function just to get the next available order ID
+2:13:33,and for that also I use chat chat GPD for that and it gave me this function
+2:13:39,so I copy pasted this function make sure you don't include cnx.close that's why I
+2:13:45,see blindly copying from chat GPT is never going to be beneficial you have to look at the code you have to think you
+2:13:52,need to have those fundamentals I know that you can't close a connection like this in the middle of the function so I
+2:13:59,removed it and I created this new function let me add this new function here
+2:14:07,I will call it what should we call it get next order ID Maybe
+2:14:13,or get next available order order ID and that function I'm not going to write
+2:14:18,the whole function because I pretty much copy paste and moved to the code from chat GPT but just to let you know
+2:14:24,City selecting the Max and whatever Max you're getting it is saying that Max
+2:14:30,plus one but let's say if you don't get any result let's say your order table is empty then return one okay so now we get
+2:14:38,let's say the order ID what do you do next next
+2:14:44,you need to insert a record here so let's say if I am ordering two Pizza
+2:14:50,first thing you need to do is using Pizza string find out the item ID
+2:14:56,so see Pizza string Item ID is three okay so from this derive the item ID
+2:15:02,that is your first step
+2:15:09,okay get Item ID which will be this once you have that
+2:15:17,and now you have two pizza so see two pizzas is your input so what did you do
+2:15:23,from Pizza you derive the item id which is three then in the step two I think step one is
+2:15:30,really get the max ID so I'm that is Step Zero so I'm skipping that now get
+2:15:37,the price get the price of two visa
+2:15:44,because this is the I price for One Visa you have to get the price for two visa
+2:15:50,which will be the get the price and multiply it by the quantity which is two and then you insert it here so your
+2:15:56,order ID item id quantity and total price now luckily we have stored procedure in our MySQL table called get
+2:16:04,price for item and if you uh look at any item see Pisa here
+2:16:12,it will give you the that pizza price and then we have second
+2:16:17,store procedure get total order price so that will be
+2:16:23,or I think we should be looking at this insert order item so here
+2:16:30,see when you say insert order item you can give food item which is pizza
+2:16:36,then quantity and then order ID and the price etcetera it will retrieve on its
+2:16:42,own so that this is good actually so using insert order item store
+2:16:47,procedure we can insert those items here but this stored procedure is taking one
+2:16:53,food item at a time we have multiple food items so we need to run some kind of for Loop here okay so go back
+2:17:02,and in the save to database function we have
+2:17:09,order so this order order can be
+2:17:16,Pizza 2 so lay one it could be this kind of dictionary we need to insert these items
+2:17:25,one by one and the way you do that is you write a for Loop you will say for food item
+2:17:33,quantity in order dot items
+2:17:40,when you do this on a dictionary you will get food item and the quantity and then you will insert so now
+2:17:47,in our DB helper we need to pop we need to add one method called insert
+2:17:53,order item let's say we have a method called insert order item where you can supply food item you can supply quantity
+2:18:02,and you supply next order ID then this will work so how to get next
+2:18:08,order ID by the way we have that function already so D we offer
+2:18:15,dot get next order ID and that is your next order ID
+2:18:22,so that part is taken care of but we need to write this function
+2:18:27,insert order item so I'll go here I'll create a new function here
+2:18:34,death insert order item and that method is
+2:18:42,taking three parameters these three okay
+2:18:49,once again I use chat dpd and say that I have this kind of store procedure just
+2:18:55,write me a function and it it wrote me a nice beautiful function which I am going
+2:19:00,to copy paste here see it is calling the insert order item
+2:19:08,store procedure this is how you call it and if the order is not successfully reply
+2:19:13,uh placed you roll back and you do it uh you know printing Etc
+2:19:19,okay so this thing is done now let's come back to this function so here now
+2:19:26,that you have insert order item I want to check the return code here because
+2:19:33,it might return -1 which is not good anyway if it returns minus one then you
+2:19:39,know if let's say you have any database error I will return minus one from here too and
+2:19:47,we'll order we will handle this thing in save to
+2:19:53,database function so we will do that but for now let's say everything worked okay
+2:19:58,at that time uh at that time we are pretty much done
+2:20:04,and we can return that that order ID that order ID back to this function so
+2:20:10,here this will be order ID okay so let's say I saved my record in a
+2:20:17,database I can say hey your order is placed uh here is your
+2:20:24,order ID okay or here is your order total actually order total is also is
+2:20:30,something you need to mention but let's first handle order ID Okay order ID by
+2:20:35,the way can be minus 1 which indicates the database error in that case you can
+2:20:41,say if order ID is equal to minus 1. then you can return some
+2:20:49,message saying that sorry I could not reply I could not place your order try it again but if it plays the order then
+2:20:58,you will say awesome I have placed your order this is the order ID okay and you are also going to say order
+2:21:05,total so how do you get order total where for order total wouldn't it be
+2:21:10,nice if you have a function in our DB helper which says okay get total order
+2:21:17,price and you just give order ID luckily we have the stored procedure for
+2:21:24,such a function so here if you say get
+2:21:29,actually get price for the item and get total price yes
+2:21:36,okay so for order ID 40 let's say total price is 12 and 8. 20 so if I say 40
+2:21:43,here said is giving me 20. so we already have a stored procedure which we can call
+2:21:48,okay so I will say get total order price so I talked to chat GPT and I said I
+2:21:54,have a store procedure called get total order price where I give order ID can you write a python code for me
+2:22:02,and it's not very surprising it showed a nice python code which looks something
+2:22:10,like this let me just uh show that code it to you
+2:22:16,so that code looks something like this you take order ID you select
+2:22:22,uh this is where you're calling that user defined function by the way it's not a store procedure it's a user
+2:22:27,defined function that I'm calling and very straightforward function it will return the total order price
+2:22:34,and once again you can use that if under the underscore name is equal to main to
+2:22:40,test that particular function okay I got the order total what do I do
+2:22:47,next now okay I have ordered total all of my fulfillment text looks good I can return
+2:22:54,that okay I can return it perfect but we need
+2:22:59,to do one more thing when an order is placed
+2:23:05,let's say this order is placed we need to remove this record from our in
+2:23:10,progress order otherwise it will mess things up and to remove that we can use this
+2:23:17,function called Del so if you do that it will remove
+2:23:23,that that whole thing from our dictionary okay now let's go back to our
+2:23:30,database and let's think one more time if we are completing everything so let's say incoming order came in you placed
+2:23:37,let's say it was pizza you you inserted two two records order ID will be same 42
+2:23:43,so 40 to 42 and the pizza and should I go to the record okay so that's it but
+2:23:49,we have another table called order tracking so here also we need to insert a record remember when order is placed
+2:23:55,the order should also go into order tracking and we can just say this is in
+2:24:00,progress Etc so let's do that one last piece and that
+2:24:06,will come in save to DB function by the way because save to DB is the function which
+2:24:11,kind of saves everything to our database and here it will be my wish that my DB helper
+2:24:20,has a routine call insert order tracking
+2:24:26,where I insert my next order ID and let's say the status I want to insert is
+2:24:32,in progress so I want to have this function which takes order ID in progress and all it
+2:24:38,will do is it will insert less order ID and this is the status progress or status correct and I used
+2:24:46,uh chat GPT once again to kind of write that function so I'm
+2:24:51,just gonna copy paste folks I know it's lot of coding so I want to save your time you are given all this code so take
+2:24:58,your time to digest this this is a long tutorial I understand folks but we are building end to end serious project here
+2:25:04,so obviously you need to help patients Whoever has patience and completes this
+2:25:10,till the end is the person who is going to get maximum benefit out of this
+2:25:15,okay so now inserted so the order is inserted into order tracking
+2:25:24,table as well looks like we have done most of the
+2:25:29,things uh that could be an error I don't know so I will just restart my server
+2:25:35,and I will now do the true end-to-end test so let's try everything once again I
+2:25:43,will say hi Place me New Order what do you want to order two
+2:25:49,pizzas and one mango let's see it it has that in our in progress order
+2:25:55,dictionary you will say nope that's it and see it placed an order the order ID
+2:26:04,is 42 the total is 21 let's verify it in our database so right now database has
+2:26:10,only two orders see 40 and 41 1441 in both the tables now let's run it
+2:26:18,again 42 see this is 42 folks this is what we
+2:26:24,ordered just now and same thing here 42 in progress see
+2:26:29,and the total is 16 and 5 21. so our chatbot is saying 21 which is correct
+2:26:38,and you placed I think two Pizza one sholay whatever perfect
+2:26:44,so now if this is like end to end tested you can also Place New Order and test
+2:26:51,that scenario where you know you are adding more and more items so let's say add two mangola c and
+2:27:00,or you can say add one word up
+2:27:06,so two mango let's see two shoulders and you can say now complete the order
+2:27:11,and you will say we have placed your order 43 see order number 43 should have
+2:27:17,three items let's go back here 43 you see it has three items
+2:27:26,amazing let me go over that session ID logic so that there is no confusion left
+2:27:31,in production there will be multiple chat windows and the server the first
+2:27:36,API backend that we are writing there could be multiple servers that we can deploy to our cloud provider it could be
+2:27:43,AWS gcp Etc and one server will be receiving requests from multiple chat
+2:27:49,Windows opening at the same time so let's say server one receives two chat windows at the same time the first
+2:27:56,person says add five solar battery in the back end we will add session ID for
+2:28:02,that session and we will say chole file order then they can say oh can you also add
+2:28:09,one word upon and in that same session ID we will add a Vada
+2:28:14,at the same time other person might start a chat say New Order now in this
+2:28:20,in New Order we don't need to do anything but when they say I need two P's and one plate Samosa we will add
+2:28:26,session ID 2 in our dictionary and we'll add two pizza and one samosa
+2:28:32,so just pause this video and just visualize this picture you your understanding will be very very clear
+2:28:37,chat window there is a session ID and the order for that session is stored as
+2:28:43,a value for that key in the dictionary now this person will say complete my
+2:28:49,order so we'll save the record in database and we will remove the session IDC session ID one is gone here see it
+2:28:56,was there before but when this says complete at that time we remove the
+2:29:02,session ID and this person can continue having a conversation and that was the reason in
+2:29:09,our code you noticed we deleted that particular key so if you
+2:29:16,see that delete code that we wrote uh where is it yes see this delete line
+2:29:25,we wrote because once the order is saved to a database we want to remove it from
+2:29:30,the dictionary now let's move on to our last piece which is the remove okay so we have handled most
+2:29:38,of uh the intentions and now the only intention that is remaining is order dot
+2:29:43,remove okay so let me comment this code and we are going to write this remove from order function
+2:29:49,this function will be actually simple uh when you're having a conversation say add to whatever one mango let's say this
+2:29:57,happens in real life person might say oh you know what please remove mango or say I don't want to order that they just
+2:30:03,change their mind while they are on the call same thing in NLP chatbot they will remove some items at any point of time
+2:30:10,so what we need to do is let's say for session id2 right now it is word upon mangulasi and if that person says remove
+2:30:18,mango let's see what do we need to do step by step step one is locate
+2:30:25,this session ID record okay so that's session ID let's say if it is session
+2:30:31,id2 that record will be this once you locate it step number two
+2:30:39,is get the key from the dictionary get the value from the dictionary actually value
+2:30:45,from debt which is actually this so like locate the session record will be this
+2:30:50,whole thing and then when you locate the value from the deck it will be this
+2:30:55,dictionary and step number three will be remove the four items that you are
+2:31:02,asking to remove now in the request you will receive an array of food items that
+2:31:07,you want to remove you will receive so let's say whatever you might uh receive multiple items so
+2:31:14,let's say in your order there is pizza as well okay I'm just adding one more
+2:31:19,item to make it clear and if the person says remove Vada pav and pizza
+2:31:25,now what we need to do is we need to either through this array and we need to also enter through the
+2:31:33,keys in this particular dictionary and remove those key value pairs so that is
+2:31:39,the simple logic that we are going to follow here so let's go back to the
+2:31:45,python code and first thing obviously we are going to check if whether this
+2:31:50,session ID exists or not okay so you will say if session ID not in in
+2:31:58,progress order see if the if it is not there then there is some error condition and you
+2:32:03,can tell to the user that looks some error happen buddy sorry you need to
+2:32:09,place a new order but let's say if session ID is there then you need to stationary there is
+2:32:17,meaning let's say this is a session ID so you need to locate this order so this order is what in progress order in
+2:32:24,bracket session ID so let's do that so in progress order okay
+2:32:29,and session ID this will give you this particular record so let's store this
+2:32:34,record in a variable called current order so this current order once again is this
+2:32:41,particular dictionary and you want to get from the request the items which are
+2:32:47,being removed let's say Vodafone and pizza is being removed let me add pizza here just to make this picture complete
+2:32:55,so that food items will be coming from
+2:33:00,parameters okay and the parameters it will be food
+2:33:05,item we will see in the dialog flow how this works but the parameter name is is essentially food items so now you are
+2:33:13,going through all those four items so let's say I'm going through Vada power and Pisa so first I get what about and
+2:33:20,that whatever you look into this particular dictionary which is your current order so you will say if item
+2:33:28,first you want to check see let's say Vada power might not be there because of some error someone said let's say those
+2:33:34,are here well you're trying to remove don'tsa from this order which doesn't have the answer that's an error
+2:33:39,condition so you need to handle it uh the way we are going to handle it is we'll say if item not in current order
+2:33:46,do something we'll worry about that later but let's say if it is in current items okay you
+2:33:54,will delete from that current order you will delete it
+2:34:00,you will delete what item that's it so you needed it from the item
+2:34:05,and then you will say Okay item is removed blah blah blah but there could be scenarios where as we saw in if
+2:34:13,condition item is not there so you want to kind of track which items are removed and which items do not exist
+2:34:20,so for that I will create an array called remove items so whenever
+2:34:25,item gets removed I want to track which items got removed okay so I will just
+2:34:31,put that in one list and the items which are not removed which we did not find
+2:34:38,will say no such items so no such items no such items dot append item when we
+2:34:46,are done with this for Loop we know which items were removed from the order which items did not exist and the way we
+2:34:52,can utilize this information is we can say if Lan of removed item is greater than zero
+2:34:58,meaning we removed some items then we will say my fulfillment text is equal to
+2:35:06,its form string we will say V remote XYZ items from your order that message will
+2:35:13,send back to the user so that we can display it in our chat window if length
+2:35:19,of No Such item let's say you did not find some items so here in our case if
+2:35:24,we say remove Vada Point Pisa unless if we said not what about pizza but let's
+2:35:29,say now it will be able to remove whatever so the message should say removed
+2:35:41,from order and the other one is no
+2:35:46,item or let's say not found in your order you want to just
+2:35:54,be very very clear so here you are saying which items were removed here you are saying which items
+2:36:02,so if length of No Such items is greater than zero then from current order your
+2:36:08,current order let's say does not have these items this is the message that we want to pass
+2:36:15,and if length of current order dot keys
+2:36:23,is equal to 0 which means your order is essentially empty let's say a current order here
+2:36:32,due to some reason I don't know what could be that reason unless it's blank it means you have an empty order
+2:36:38,so you want to display that as well well after sorry after removing it after
+2:36:45,removing the item let's say your order is blank okay so let's say you had only
+2:36:51,this thing one thing whatever and you remove it upon so your order is blank
+2:36:58,okay uh we will also have as condition your order does is not blank so you want to
+2:37:04,display which items are remaining in the order so what items are remaining what
+2:37:10,whatever is your current order this current order those are the items remaining right so how do you convert
+2:37:16,this current uh order into a string format so we already wrote this function called get string from foot dick so
+2:37:24,we'll use we will just use that function few minutes back so the same function we
+2:37:30,are going to use here and say your uh okay
+2:37:37,and this is generic helper so from generic helper call this function get
+2:37:43,the information on which items are removed and what what is left now so this this
+2:37:50,is the current order and we'll say here is what is left in your order so these
+2:37:56,are the only things which are left in your order and after that we can return the
+2:38:03,response okay I'm doing some copy paste to save again time on my recording hope you
+2:38:08,understand all right my function I think looks pretty good we
+2:38:14,kept track of removed items no such items and Json response is being
+2:38:21,returned so let's test this thing end to end so the server is already restarted
+2:38:26,I'm going to go to my dialog flow so let's locate the direct flow here
+2:38:33,you'll reset all the contacts you will say hi we are forming a new order here
+2:38:39,so you will say New Order I need
+2:38:44,you can say two mangle of Finch Oliver today so see
+2:38:49,two mango let's see and cholesterol uh wait it did not queue the
+2:38:58,ah see it did not give the response saying that if so far you have this and
+2:39:03,whenever that happens I go to diagnostic info see fulfillment status is again that same and grock error because if you
+2:39:10,look at your ngrok the session has expired so you need to restart it it will
+2:39:16,generate a new string I know it's a pain to kind of copy paste the new string anytime if you don't want to go through
+2:39:22,the pane just create a new account on Android so right click I will go to
+2:39:27,fulfillment and save it it should work now
+2:39:35,all right I will say hi okay new order
+2:39:40,[Music] two mango let's see and two Chola
+2:39:45,battery now see I got this response which means my back end is okay you can also remove items now so let's
+2:39:52,say I have two mango let's see two children
+2:39:58,please I don't want to eat too much oily okay so it says removed
+2:40:04,it says remote today but it doesn't say what items are left okay it here is what
+2:40:13,is left it did not say that so why it did not say that it should say here is
+2:40:18,what is left let me see okay maybe we can taste this whole thing again so let
+2:40:25,me put some stress here so we came all the way here and we have this removed
+2:40:30,items from the current order after that agnostic info oh yeah because I did not enable the
+2:40:39,Fulfillment yes that's the reason so order dot remove you need to enable the
+2:40:46,Fulfillment here so go here see the web Hook was not enabled and it was just giving me this
+2:40:53,default response let me remove this response so that it's not confusing and let's try this again
+2:41:01,New Order
+2:41:15,I hope you are getting lot of water in your mouth while working on this project uh so you have done a lot of hard work
+2:41:21,so maybe order some of these things and just enjoy give your mind a break okay you have two mangoes let's see left now
+2:41:28,you can say that's it that's it please place an order
+2:41:36,awesome we placed an order order number 44. if you go to the database you will find
+2:41:43,a record order number 44 should be there 44 is there hooray
+2:41:50,I need to pay 10 at the time of delivery uh and let's say you wait you're very
+2:41:56,hungry you're waiting for 15 minute order is not there yet you will say hey
+2:42:02,track order what is the order ID 44 or 43 44 is not available okay why did I
+2:42:10,get that okay let's check so here track order takes one position
+2:42:16,argument but two given got it so remember we are passing two arguments so
+2:42:22,one we need to pass session ID as well although we are not using it but it's a
+2:42:28,string I think that was the error so you can hit save restart the server you can
+2:42:33,once again say track order 44 and it is in progress at some point
+2:42:41,when the order is dispatched someone from the back end the other system will
+2:42:48,change this order from in progress to let's say in transit okay that's gonna happen through some
+2:42:54,other system and when that happens and when now you tracked order number 44 it
+2:43:00,will say it is in transit okay it is saying it is in progress maybe it is little slow I already applied applied
+2:43:11,okay I see it is going on because I have an as open connection actually so the
+2:43:18,order is not committed because my connection is still open in my back end so I need to exit
+2:43:24,I need to just I think I can just restart the server
+2:43:29,and when you restart the server here let's see
+2:43:37,see this came it in transit and now when you check 44 it should say in transit
+2:43:45,so this is working good end to end now let's go to Integrations and through
+2:43:51,integration see it provides variety of Integrations where you can integrate your chat board to twilio a Via Way a
+2:43:58,variety of platforms slack you name it there's a web demo by the way if you
+2:44:03,click on it if it says enable button just click on that and when you click on this thing
+2:44:10,you'll get this kind of window and here see hey what do you want to do new order
+2:44:16,this is now full-fledged chatbot two pizzas
+2:44:24,and it plays the order sorry I did not understand oh yeah see TWP I had a typo two pizzas
+2:44:32,one rava dancer and it will add that order uh hey please
+2:44:39,remove I don't want rawatosa I want to add
+2:44:46,masala dosa actually I change my mind add one masala dosa see we need to
+2:44:52,specify quantity and now I have two Pizza one masala dosa
+2:44:58,do you need anything else nope your order is placed 45 okay and you can also
+2:45:04,track the order what is your order ID 45 okay you can also say my order ID
+2:45:14,is 41 you can use different type of language and it will still work so my
+2:45:19,chat board is ready uh as a Next Step we are going to integrate this chat
+2:45:25,board into a website let's now create a website very quickly once again using
+2:45:31,chat GPT I went to chat GPD and said create me a website for Pandey Eatery
+2:45:38,the website should have visual look and feel and it should have only following items so it created me a layout which looks
+2:45:45,pretty good like very basic structure then I said create HTML and CSS code for
+2:45:51,it and you can give any specific guideline let's say you want orange orange theme or red or yellow theme
+2:45:57,whatever you like it will generate a basic HTML and CSS score it will not
+2:46:03,generate images by the way so immediately is something you have to get on your own
+2:46:10,I took all of this code I gave a lot of instructions I'm not going to go over all of them because
+2:46:16,this is not a web development tutorial essentially but I just want to highlight that using chat GPT even if you don't
+2:46:23,know web programming you can still create a website and I have given the code of that
+2:46:31,in the front-end directory so if you have downloaded our main folder you
+2:46:37,would see front-end directory so that front-end directory has all these files so I give couple of images so I created
+2:46:44,these images On My Own by the way uh using variety of tools
+2:46:49,and then I also got some Banner from the subscription that I have I have put I I use PowerPoint and created all these
+2:46:57,logos all of this was done pretty quickly and food is a directory which
+2:47:02,has the food website okay okay so this is I think something different but home.html is the main HTML page and this
+2:47:10,is called uh your cascading uh style sheet you know it defines the visual
+2:47:15,look and feel of the website now when you double click on this particular website
+2:47:21,you will see uh the website comes up and this particular thing comes up at the bottom
+2:47:27,okay so this is this is what comes up when you say hi it will say New Order or track order and the way we got this chat
+2:47:35,window in our website is using this iframe control
+2:47:42,so this I frame controller you can just copy paste in it into your website code so here I have my HTML code so I copy
+2:47:49,pasted it and all it is doing is it is going to through some Cloud function https
+2:47:56,console.dilockflow.com and it is giving this specific ID for that chatbot I also
+2:48:01,created by the way this special class called chat board and put it in my style sheet and I used chat GPT for it so if
+2:48:09,you know how to install chat GPT you can create website easily uh and now that I have a website
+2:48:17,I can test the whole thing end to end on the website itself so here on the
+2:48:23,website I will say Place me a new order it will say what order I will say one
+2:48:29,biryani and anything else no please
+2:48:34,[Music] you know complete the order complete the order
+2:48:40,and the order is completed see it's working there is a website there is a chat board and it is working end to end
+2:48:47,you can say track order and 46.
+2:48:53,all right so this is complete our website is ready uh
+2:48:58,once again I did not go through a lot of HTML and CSS fundamentals here because this is not a web development tutorial
+2:49:04,it is an NLP tutorial uh you will find all the code in the front-end directory
+2:49:11,so when you download this you will you will have three type of directories
+2:49:17,front-end back-end and dialogflow assets so front end will have all the website code backend has our obviously our
+2:49:24,python code our database has database dump and this assets have the training
+2:49:31,phrases so hooray good job website is complete and we have a chat board
+2:49:37,integrated into our website now now comes the most interesting part of this entire tutorial which is exercise folks
+2:49:44,without practicing you're not going to learn it so I am assuming so far you have practice along with me and I'm
+2:49:50,going to give you two exercises the first one is there is an issue with incomplete order and this will happen in
+2:49:56,real life too when you deploy the first version of your chat board it's not going to be perfect there will be issues
+2:50:03,which will be reported by Beta users or even in production you will find issues so you have to go through the iteration
+2:50:08,to make your chat board perfect here what is happening is let's say you added
+2:50:13,two Pizza in your order correct so right now is saying you have two Pizza in your order but someone let's say by mistake
+2:50:21,without completing the order they are saying New Order you see at this point
+2:50:27,body is asking you do you need anything else you should say no please complete the order but you are not saying that
+2:50:33,you are saying New Order and you have started New Order whereas the previous order of two Pisa is
+2:50:40,incomplete okay now let's say I want rawa Dosa this time so two rava dosa
+2:50:46,okay look at that that's a problem I only ordered two robot Dosa because the New
+2:50:52,Order forget everything that I said before but it is still remembering that you order two Pizza in the previous
+2:51:00,iteration this is a problem whenever someone says New Order you need to clean
+2:51:05,your cash you need to clean your in progress order dictionary so that is one
+2:51:11,exercise that you have to work on the second exercise is actually simple the
+2:51:16,only two option New Order track order add a third option called store hours and when someone says give me store
+2:51:23,hours you should return a fixed response you don't need to call back in just from
+2:51:28,dialogflow text response you can return this folks this is going to be very easy okay so please don't complain you can do
+2:51:35,this very very easily once you have done both of these exercises write a nice LinkedIn post where you are summarizing
+2:51:43,your work you're saying I did this project here are my key learnings what
+2:51:48,are the things you need to take care when building a chat board such as developing intents going through the
+2:51:53,flow going through that whole cycle talk about MVP scope of work you should talk about non-technical things in this
+2:52:01,LinkedIn post and then post this on LinkedIn see LinkedIn is super important
+2:52:06,folks because it helps you build online credibility in the post you can give
+2:52:12,credits if you like this video obviously and you can also just give a tag like we
+2:52:18,have on LinkedIn we have a company so you can just say hashtag code Basics you can put my name my co-partner Hammond's
+2:52:24,name and doing that activity on LinkedIn can actually help you get a job because
+2:52:30,there is a person who got a job by doing this so what we do is on code Basics dot Io if you go we conduct this resume
+2:52:37,project challenges and in that challenge we give your data set and you build analytics dashboard
+2:52:44,and so on and we evaluate their entries and these people have a habit of writing
+2:52:50,LinkedIn posts so Irish summer was the first winner he wrote this LinkedIn post and actually he got a job as a data
+2:52:55,analyst in integ enterprising just because of this post because when he became winner I posted separately saying
+2:53:02,that uh you know Aaron won this Etc and he got an interview call but if you
+2:53:08,don't consider that whole resume project challenge in general if you're learning something post it on LinkedIn because other people are going to notice your
+2:53:14,word they are going to notice your English return skill iron did a nice presentation by the way see this is an
+2:53:21,amazing presentation that he made and here he shared all his insights maybe
+2:53:28,for this project you can make a nice presentation in PowerPoint or whatever
+2:53:34,presentation tool you like and present your Insight because presentation skills
+2:53:39,are very important for a data scientist or even NLP engineer so by doing that you are getting a chance to practice
+2:53:45,those soft skills and you're showcasing those skills to the world so folks this is actually very important okay do not
+2:53:51,ignore this you have watched this entire video you have spent so much hard work on this so far so please finish that
+2:53:58,hard work by completing those two simple exercises and also finishing uh this
+2:54:05,particular aspect of the exercise which is posting on LinkedIn see he's he's tagging my company he's saying thanks
+2:54:12,whatever you can do all of that another thing I want to mention is on core basic.io resume a project challenge we
+2:54:19,are going to post new challenge on dialogue flow only so folks if you have not please register it's free by the way
+2:54:25,this whole project challenge is free you don't have to pay a single uh penny for this make a login to codebasic.io and
+2:54:32,whenever new challenge comes out we send email to those folks that challenge will be based
+2:54:39,on whatever you learned from today's tutorial and whoever wins we give them prizes to okay so all that information
+2:54:45,is here go to codebasic.io resume your projects you will find that make sure you participate in that upcoming
+2:54:52,challenge it will be on building chatbot using dialog flow and we will take a
+2:54:58,different use case all together but whatever you learn from this video is going to be useful to you
+2:55:05,[Music]
+2:55:20,thank you

@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
 import { navLinks } from "../constants";
+import CV from "../assets/MohamedSamirCV.pdf";
+
 import { logo, menu, close } from "../assets";
 
 const Navbar = () => {
@@ -38,15 +40,22 @@ const Navbar = () => {
           {navLinks.map((nav) => (
             <li
               key={nav.id}
-              className={`${active === nav.title ? "text-white" : "text-secondary"
-                } hover:text-white text-[18px] font-medium cursor-pointer`}
+              className={`${
+                active === nav.title ? "text-white" : "text-secondary"
+              } hover:text-white text-[18px] font-medium cursor-pointer`}
               onClick={() => {
-                setActive(nav.title)
-              console.log(nav.id)}}
+                setActive(nav.title);
+                console.log(nav.id);
+              }}
             >
               <a href={`#${nav.id}`}>{nav.title}</a>
             </li>
           ))}
+          <li className="hover:text-white text-[18px] font-medium cursor-pointer text-secondary">
+            <a href={CV} download>
+              Download CV
+            </a>
+          </li>
         </ul>
         <div className="sm:hidden flex flex-1 justify-end items-center">
           <img
@@ -70,13 +79,18 @@ const Navbar = () => {
                     active === nav.title ? "text-white" : "text-secondary"
                   } font-poppins font-medium cursor-pointer text-[16px]`}
                   onClick={() => {
-                    setActive(nav.title)
-                    setToggle(!toggle)
+                    setActive(nav.title);
+                    setToggle(!toggle);
                   }}
                 >
                   <a href={`#${nav.id}`}>{nav.title}</a>
                 </li>
               ))}
+              <li className="font-poppins font-medium cursor-pointer text-[16px] text-secondary">
+                <a href={CV} download>
+                  Download CV
+                </a>
+              </li>
             </ul>
           </div>
         </div>

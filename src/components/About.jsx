@@ -19,13 +19,9 @@ const ServiceCard = ({ index, title, icon }) => (
           scale: 1,
           speed: 450,
         }}
-        className="bg-[#020506] rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col"
+        className="bg-[#001a2d] rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col"
       >
-        <img
-          src={icon}
-          alt={title}
-          className="w-16 h-16 object-contain"
-        />
+        <img src={icon} alt={title} className="w-16 h-16 object-contain" />
 
         <h3 className="text-secondary text-[20px] font-bold text-center">
           {title}
@@ -47,28 +43,21 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className="mt-4 text-white text-[18px] max-w-6xl leading-[30px]"
       >
-        Hello, I am a web scraping expert and intermediate machine learning
-        developer. I specialize in building custom web scraping solutions that
-        can extract data from any website, regardless of its complexity or
-        structure. Additionally, I have experience working with machine learning
-        algorithms to analyze and preprocess extracted data. I am proficient in
-        web scraping frameworks such as Beautiful Soup and Selenium, and I am
-        also experienced in programming languages such as Python, JS and C++. I
-        have a strong understanding of data structures and algorithms, which
-        enables me to create efficient and reliable web scraping solutions. In
-        addition to web scraping, I have experience in using machine learning
+        Hello and welcome to my website! I'm a full stack developer with
+        expertise in a wide range of technologies and tools. On the front end,
+        I'm skilled in HTML, CSS, JavaScript, Tailwind, React, and Bootstrap,
+        and on the back end, I have experience with Node, MongoDB, MySQL, and
+        Python. I'm also well-versed in machine learning, using tools like
+        TensorFlow, Scikit-learn, Pandas, Matplotlib, and NumPy to implement
         algorithms such as regression, classification, clustering, and neural
-        networks to analyze data and make predictions. I have worked with
-        machine learning libraries such as TensorFlow and Scikit-Learn and have
-        experience in data preprocessing, feature engineering, and model
-        development. Whether you need to extract data from e-commerce websites,
-        news sites, or social media platforms, I can build a custom solution
-        that meets your specific needs. I am also available to consult on data
-        cleaning, data preprocessing, and machine learning model development. If
-        you're looking for a reliable and experienced web scraping expert and
-        machine learning developer, please don't hesitate to contact me. I am
-        dedicated to delivering high-quality work that meets your needs and
-        exceeds your expectations.
+        networks to analyze data and make predictions, and I have experience
+        with web scraping using Beautiful Soup and Selenium. I can extract data
+        from e-commerce websites, news sites, or social media platforms
+        Additionally, I'm proficient in C++ and Java. I have a strong
+        understanding of data structures and algorithms. With my diverse skill
+        set, I'm equipped to tackle a wide range of projects and challenges.
+        Take a look at my portfolio to see some of my work, and feel free to get
+        in touch to discuss potential collaborations.
       </motion.p>
 
       <div className="mt-20 flex flex-wrap gap-10">

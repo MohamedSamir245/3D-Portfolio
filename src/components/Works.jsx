@@ -23,7 +23,7 @@ const ProjectCard = ({
           scale: 1,
           speed: 450,
         }}
-        className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full"
+        className="bg-[#001a2d] p-5 rounded-2xl sm:w-[360px] w-full shadow-card "
       >
         <div className="relative w-full h-[230px]">
           <img
@@ -81,14 +81,10 @@ const Works = () => {
         >
           These Projects highlights the diverse range of web development,
           machine learning, web scraping, and university projects that I have
-          successfully completed. My web development projects include building
-          responsive websites, custom web applications using React and Node. I
-          also specialize in machine learning projects, where I use cutting-edge
-          algorithms to solve complex problems in natural language processing,
-          computer vision, and data analysis. My Projects Section showcases the
-          creativity, technical expertise, and attention to detail that we bring
-          to every project. Explore My portfolio to see how I can help you take
-          your project to the next level.
+          successfully completed. My Projects Section showcases the creativity,
+          technical expertise, and attention to detail that we bring to every
+          project. Explore My portfolio to see how I can help you take your
+          project to the next level.
         </motion.p>
       </div>
 

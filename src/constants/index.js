@@ -16,10 +16,7 @@ import {
   starbucks,
   tesla,
   shopify,
-  carrent,
   CarTech,
-  jobit,
-  tripguide,
   threejs,
   python,
   mysql,
@@ -28,7 +25,135 @@ import {
   scikitLearn,
   cpp,
   slmGame,
+  
 } from "../assets";
+
+import backendIcon from '../assets/backend icon.png'
+import programming from "../assets/programming.png";
+import frontend from "../assets/responsive-design.png";
+import MLIcon from "../assets/machine-learning.png";
+import scraping from "../assets/scraping.png";
+
+export const skillsCards = [
+  {
+    title: "Front End",
+    icon: frontend,
+    skills: [
+      {
+        skill: "HTML",
+        level: "Experienced",
+      },
+      {
+        skill: "CSS",
+        level: "Experienced",
+      },
+      {
+        skill: "JavaScript",
+        level: "Experienced",
+      },
+      {
+        skill: "React",
+        level: "Experienced",
+      },
+      {
+        skill: "Bootstrap",
+        level: "Experienced",
+      },
+      {
+        skill: "tailwind",
+        level: "Experienced",
+      },
+    ],
+  },
+  {
+    title: "Back End",
+    icon: backendIcon,
+
+    skills: [
+      {
+        skill: "Node",
+        level: "Experienced",
+      },
+      {
+        skill: "MongoDB",
+        level: "Experienced",
+      },
+      {
+        skill: "MySQL",
+        level: "Experienced",
+      },
+      {
+        skill: "Python",
+        level: "Experienced",
+      },
+    ],
+  },
+  {
+    title: "Machine Learning",
+    icon: MLIcon,
+
+    skills: [
+      {
+        skill: "TensorFlow",
+        level: "Experienced",
+      },
+      {
+        skill: "Scikit-Learn",
+        level: "Experienced",
+      },
+      {
+        skill: "Pandas",
+        level: "Experienced",
+      },
+      {
+        skill: "Numpy",
+        level: "Experienced",
+      },
+      {
+        skill: "MatplotLib",
+        level: "Experienced",
+      },
+    ],
+  },
+  {
+    title: "General",
+    icon: programming,
+
+    skills: [
+      {
+        skill: "Java",
+        level: "Experienced",
+      },
+      {
+        skill: "C++",
+        level: "Experienced",
+      },
+      {
+        skill: "Ubuntu",
+        level: "Experienced",
+      },
+      {
+        skill: "C",
+        level: "Experienced",
+      },
+    ],
+  },
+  {
+    title: "Web Scraping",
+    icon: scraping,
+
+    skills: [
+      {
+        skill: "Selenium",
+        level: "Experienced",
+      },
+      {
+        skill: "BeautifulSoup",
+        level: "Experienced",
+      },
+    ],
+  },
+];
 
 export const navLinks = [
   {

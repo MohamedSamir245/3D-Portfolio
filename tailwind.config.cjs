@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       colors: {
         primary: "#050816",
-        secondary: "#a5d4e3",
+        secondary: "#c0e1eb",
         tertiary: "#151030",
         forth: "#67b6d0",
         fifth: "#00030e",
@@ -19,10 +19,11 @@ module.exports = {
         card: "0px 35px 120px -15px #211e35",
       },
       screens: {
-        xs: "450px",
+        xs: "475px",
       },
       backgroundImage: {
         "hero-pattern": "url('/src/assets/bgs/herobg.jpg')",
+        "phone-pattern":"url('/src/assets/phone_pattern.jpg')"
       },
     },
   },
