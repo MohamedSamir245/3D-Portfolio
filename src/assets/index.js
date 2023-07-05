@@ -27,7 +27,7 @@ import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
 
 import carrent from "./carrent.png";
-import CarTech from './CarTech.jpg'
+import CarTech from "./CarTech.jpg";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 import python from "./tech/python.png";
@@ -36,10 +36,13 @@ import tensorflow from "./tech/tensorflow.jpg";
 import ubuntu from "./tech/ubuntu.svg";
 import scikitLearn from "./tech/scikitLearn.jpg";
 import cpp from "./tech/C++.png";
-import AES from './AES.png'
-import slmGame from './SLMGame.jpg'
+import AES from "./AES.png";
+import slmGame from "./SLMGame.jpg";
 
-
+import stroke from "./stroke.jpeg";
+import dogBreed from "./DogBreed.jpg";
+import emotion from "./emotion.jpg";
+import todo from "./ToDo.png";
 
 export {
   logo,
@@ -79,4 +82,8 @@ export {
   CarTech,
   AES,
   slmGame,
+  stroke,
+  dogBreed,
+  emotion,
+  todo,
 };

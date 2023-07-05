@@ -18,7 +18,7 @@ const SkillCard = ({ index, title, icon, skills }) => {
       className={`
         w-[350px] items-center sm:block sm:w-[550px]`}
     >
-      <Tilt className="xs:w-[450px] w-full ml-2 sm:ml-16 flex">
+      <Tilt className="xs:w-[450px] w-full ml-1 sm:ml-16 flex">
         <motion.div
           variants={fadeIn("right", "spring", index * 0.5, 0.75)}
           className="w-full bg-gradient-to-b from-[#327f99] to-white p-[2px] rounded-[20px] shadow-card min-w-[300px] items-center flex"
@@ -29,7 +29,7 @@ const SkillCard = ({ index, title, icon, skills }) => {
               scale: 1,
               speed: 450,
             }}
-            className="bg-[#001a2d] rounded-[20px] py-5 px-12 h-[450px] w-[445px] justify-center items-start"
+            className="bg-[#001a2d] rounded-[20px] py-5 px-12 h-[480px] w-[445px] justify-center items-start"
           >
             <h3 className="text-secondary text-[38px] font-bold text-center mb-7 mt-2">
               {title}

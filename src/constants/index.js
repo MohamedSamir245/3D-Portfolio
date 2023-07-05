@@ -25,10 +25,13 @@ import {
   scikitLearn,
   cpp,
   slmGame,
-  
+  stroke,
+  dogBreed,
+  emotion,
+  todo,
 } from "../assets";
 
-import backendIcon from '../assets/backend icon.png'
+import backendIcon from "../assets/backend icon.png";
 import programming from "../assets/programming.png";
 import frontend from "../assets/responsive-design.png";
 import MLIcon from "../assets/machine-learning.png";
@@ -40,11 +43,11 @@ export const skillsCards = [
     icon: frontend,
     skills: [
       {
-        skill: "HTML",
+        skill: "HTML, CSS",
         level: "Experienced",
       },
       {
-        skill: "CSS",
+        skill: "MUI",
         level: "Experienced",
       },
       {
@@ -113,10 +116,38 @@ export const skillsCards = [
         skill: "MatplotLib",
         level: "Experienced",
       },
+      {
+        skill: "Keras",
+        level: "Experienced",
+      },
+      {
+        skill: "OpenCV",
+        level: "Experienced",
+      },
+    ],
+  },
+
+  {
+    title: "Web Scraping",
+    icon: scraping,
+
+    skills: [
+      {
+        skill: "Selenium",
+        level: "Experienced",
+      },
+      {
+        skill: "BeautifulSoup",
+        level: "Experienced",
+      },
+      {
+        skill: "Proxy",
+        level: "Experienced",
+      },
     ],
   },
   {
-    title: "General",
+    title: "Another Skills",
     icon: programming,
 
     skills: [
@@ -136,19 +167,8 @@ export const skillsCards = [
         skill: "C",
         level: "Experienced",
       },
-    ],
-  },
-  {
-    title: "Web Scraping",
-    icon: scraping,
-
-    skills: [
       {
-        skill: "Selenium",
-        level: "Experienced",
-      },
-      {
-        skill: "BeautifulSoup",
+        skill: "Git",
         level: "Experienced",
       },
     ],
@@ -384,6 +404,107 @@ const projects = [
     image: slmGame,
     source_code_link:
       "https://github.com/MohamedSamir245/Enhanced-Snake-ladder-Game",
+  },
+  {
+    name: "Stroke Prediction Model",
+    description:
+      "Machine learning model to predict whether person will have stroke or not based on data of more than 5000 person.",
+    tags: [
+      {
+        name: "Scikit-Learn",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "TensorFlow",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Matplotlib",
+        color: "text-[#ffff00]",
+      },
+      {
+        name: "Numpy",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: stroke,
+    source_code_link: "https://github.com/MohamedSamir245/StrokePredectionML/",
+  },
+  {
+    name: "Dog Breed Identifier",
+    description:
+      "Neural network model to predict the breed  of a dog out of 70 breeds from the image.",
+    tags: [
+      {
+        name: "Python",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "TensorFlow",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Matplotlib",
+        color: "text-[#ffff00]",
+      },
+      {
+        name: "Numpy",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: dogBreed,
+    source_code_link:
+      "https://github.com/MohamedSamir245/Dog_Breed_Classifier/",
+  },
+  {
+    name: "Emotion Classifier",
+    description:
+      "Deep Learning Project: CNN model to classify the emotion from a face image.",
+    tags: [
+      {
+        name: "Python",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "TensorFlow",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Matplotlib",
+        color: "text-[#ffff00]",
+      },
+      {
+        name: "Numpy",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "pandas",
+        color: "red-text-gradient",
+      },
+    ],
+    image: emotion,
+    source_code_link:
+      "https://github.com/MohamedSamir245/Emotion-Classification",
+  },
+  {
+    name: "ToDo Website",
+    description: "Website built with react, and connected to data base",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "node",
+        color: "green-text-gradient",
+      },
+      {
+        name: "MySQL",
+        color: "text-[#ffff00]",
+      },
+    ],
+    image: todo,
+    source_code_link: "https://github.com/MohamedSamir245/ToDo-Website-React",
   },
 ];
 
