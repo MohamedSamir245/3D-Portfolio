@@ -20,7 +20,7 @@ const SkillCard = ({ index, title, icon, skills }) => {
     >
       <Tilt className="xs:w-[450px] w-full ml-1 sm:ml-16 flex">
         <motion.div
-          variants={fadeIn("right", "spring", index * 0.5, 0.75)}
+          variants={fadeIn("right", "spring", index * 0.5, 0.5)}
           className="w-full bg-gradient-to-b from-[#327f99] to-white p-[2px] rounded-[20px] shadow-card min-w-[300px] items-center flex"
         >
           <div
