@@ -43,6 +43,8 @@ import stroke from "./stroke.jpeg";
 import dogBreed from "./DogBreed.jpg";
 import emotion from "./emotion.jpg";
 import todo from "./ToDo.png";
+import scrapingHatla2ee from './scrapingHatla2ee.jpg'
+import Portfolio from './Portfolio.png'
 
 export {
   logo,
@@ -86,4 +88,6 @@ export {
   dogBreed,
   emotion,
   todo,
+  scrapingHatla2ee,
+  Portfolio,
 };

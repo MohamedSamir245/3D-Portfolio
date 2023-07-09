@@ -29,6 +29,8 @@ import {
   dogBreed,
   emotion,
   todo,
+  scrapingHatla2ee,
+  Portfolio,
 } from "../assets";
 
 import backendIcon from "../assets/backend icon.png";
@@ -192,20 +194,20 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Web Developer",
-    icon: web,
+    title: "Front End Developer",
+    icon: frontend,
   },
   {
     title: "Machine Learning Engineer",
-    icon: mobile,
+    icon: MLIcon,
   },
   {
-    title: "Backend Developer",
-    icon: backend,
+    title: "Back End Developer",
+    icon: backendIcon,
   },
   {
     title: "Web Scraper",
-    icon: creator,
+    icon: scraping,
   },
 ];
 
@@ -230,7 +232,6 @@ const technologies = [
     name: "ScikitLearn",
     icon: scikitLearn,
   },
-
   {
     name: "My SQL",
     icon: mysql,
@@ -349,12 +350,12 @@ const testimonials = [
 
 const projects = [
   {
-    name: "Car Tect",
+    name: "Personal Portfolio",
     description:
       "Web-based platform that allows users to buy or rent car, and offers many services form different maintenance centers. It connects customers to car showrooms, service centers and maintenance centers.",
     tags: [
       {
-        name: "react",
+        name: "React",
         color: "blue-text-gradient",
       },
       {
@@ -362,7 +363,32 @@ const projects = [
         color: "green-text-gradient",
       },
       {
-        name: "node",
+        name: "Node",
+        color: "text-[#ffff00]",
+      },
+      {
+        name: "scss",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: Portfolio,
+    source_code_link: "https://github.com/MohamedSamir245/CarTech-mss-Website",
+  },
+  {
+    name: "Car Tech",
+    description:
+      "Web-based platform that allows users to buy or rent car, and offers many services form different maintenance centers. It connects customers to car showrooms, service centers and maintenance centers.",
+    tags: [
+      {
+        name: "React",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "MySQL",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Node",
         color: "text-[#ffff00]",
       },
       {
@@ -379,7 +405,7 @@ const projects = [
       "The AES algorithm is capable of using cryptographic kays of 128, 192 and 256 bits to encrypt and decrypt data is blocks of 128 bits. This is a verilog project.",
     tags: [
       {
-        name: "verilog",
+        name: "Verilog",
         color: "blue-text-gradient",
       },
     ],
@@ -387,24 +413,7 @@ const projects = [
     source_code_link:
       "https://github.com/MohamedSamir245/Advanced-Encryption-System",
   },
-  {
-    name: "S&L - Monopoly Game",
-    description:
-      "The project is a simple game application that combines aspects of Snakes & Ladders and Monopoly. There are two modes in the game, Design mode and Play mode. In Design mode, the user can build the game board, while in Play mode, the player aims to reach the last cell before the other players. The game board includes snakes, ladders, and cards that can help or hinder the player's progress. The code is written in C++ using object-oriented programming and adhere to the responsibilities of each class as outlined in the project requirements.",
-    tags: [
-      {
-        name: "c++",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "OOP",
-        color: "green-text-gradient",
-      },
-    ],
-    image: slmGame,
-    source_code_link:
-      "https://github.com/MohamedSamir245/Enhanced-Snake-ladder-Game",
-  },
+
   {
     name: "Stroke Prediction Model",
     description:
@@ -478,7 +487,7 @@ const projects = [
         color: "pink-text-gradient",
       },
       {
-        name: "pandas",
+        name: "Pandas",
         color: "red-text-gradient",
       },
     ],
@@ -491,11 +500,11 @@ const projects = [
     description: "Website built with react, and connected to data base",
     tags: [
       {
-        name: "react",
+        name: "React",
         color: "blue-text-gradient",
       },
       {
-        name: "node",
+        name: "Node",
         color: "green-text-gradient",
       },
       {
@@ -506,6 +515,45 @@ const projects = [
     image: todo,
     source_code_link: "https://github.com/MohamedSamir245/ToDo-Website-React",
   },
+  {
+    name: "Scraping Hatla2ee",
+    description:
+      "Scrapind data of all cars from hatla2ee.com with 3 python scripts. Each car has 25 features.",
+    tags: [
+      {
+        name: "Python",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Pandas",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Beautiful Soup",
+        color: "text-[#ffff00]",
+      },
+    ],
+    image: scrapingHatla2ee,
+    source_code_link:
+      "https://github.com/MohamedSamir245/Web-Scraping-Hatla2ee",
+  },
+  {
+    name: "S&L - Monopoly Game",
+    description:
+      "The project is a simple game application that combines aspects of Snakes & Ladders and Monopoly. There are two modes in the game, Design mode and Play mode. In Design mode, the user can build the game board, while in Play mode, the player aims to reach the last cell before the other players. The game board includes snakes, ladders, and cards that can help or hinder the player's progress. The code is written in C++ using object-oriented programming and adhere to the responsibilities of each class as outlined in the project requirements.",
+    tags: [
+      {
+        name: "c++",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "OOP",
+        color: "green-text-gradient",
+      },
+    ],
+    image: slmGame,
+    source_code_link:
+      "https://github.com/MohamedSamir245/Enhanced-Snake-ladder-Game",
+  },
 ];
-
 export { services, technologies, experiences, testimonials, projects };

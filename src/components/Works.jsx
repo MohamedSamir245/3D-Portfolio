@@ -81,9 +81,7 @@ const Works = () => {
           These Projects highlights the diverse range of web development,
           machine learning, web scraping, and university projects that I have
           successfully completed. My Projects Section showcases the creativity,
-          technical expertise, and attention to detail that we bring to every
-          project. Explore My portfolio to see how I can help you take your
-          project to the next level.
+          technical expertise, and attention to detail to every project.
         </p>
       </div>
 
