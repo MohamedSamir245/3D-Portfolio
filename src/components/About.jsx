@@ -50,14 +50,16 @@ const About = () => {
         Python. I'm also well-versed in machine learning, using tools like
         TensorFlow, Scikit-learn, Pandas, Matplotlib, and NumPy to implement
         algorithms such as regression, classification, clustering, and neural
-        networks to analyze data and make predictions, and I have experience
-        with web scraping using Beautiful Soup and Selenium. I can extract data
-        from e-commerce websites, news sites, or social media platforms
-        Additionally, I'm proficient in C++ and Java. I have a strong
-        understanding of data structures and algorithms. With my diverse skill
-        set, I'm equipped to tackle a wide range of projects and challenges.
-        Take a look at my portfolio to see some of my work, and feel free to get
-        in touch to discuss potential collaborations.
+        networks to analyze data and make predictions. Currently, I am studing a
+        wide range of topics in Machine Learing and Deep Learning from "Hands On
+        Machine Learning with Scikit-Learn Keras and TensorFlow" book by
+        Aurélien Géron, and finally, I have experience with web scraping using Beautiful
+        Soup and Selenium. I can extract data from e-commerce websites, news
+        sites, or social media platforms Additionally, I'm proficient in C++ and
+        Java. I have a strong understanding of data structures and algorithms.
+        With my diverse skill set, I'm equipped to tackle a wide range of
+        projects and challenges. Take a look at my portfolio to see some of my
+        work, and feel free to get in touch to discuss potential collaborations.
       </motion.p>
 
       <div className="mt-20 flex flex-wrap gap-10">
